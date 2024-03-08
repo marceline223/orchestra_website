@@ -8,7 +8,7 @@
       />
     </v-app-bar-title>
 
-    <v-spacer></v-spacer>
+    <v-spacer/>
 
     <router-link
         to="/"

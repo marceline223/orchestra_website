@@ -10,6 +10,3 @@ import HeaderComponent from "./components/HeaderComponent.vue";
     </v-main>
   </v-app>
 </template>
-
-<style scoped>
-</style>
