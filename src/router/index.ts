@@ -1,6 +1,6 @@
-import {createRouter, createWebHashHistory} from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 
-import MainPage from "../components/MainPage.vue";
+import MainPage from "../components/main-page/MainPage.vue";
 import AboutUsPage from "../components/AboutUsPage.vue";
 import ContactsPage from "../components/ContactsPage.vue";
 import GalleryPage from "../components/GalleryPage.vue";
@@ -36,7 +36,7 @@ const routes = [
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory()
+  history: createWebHistory()
 })
 
 export default router
