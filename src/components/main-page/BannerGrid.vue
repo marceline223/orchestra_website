@@ -8,7 +8,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -20,7 +19,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -40,7 +38,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -52,7 +49,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -66,7 +62,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -86,7 +81,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -100,7 +94,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -112,7 +105,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -124,7 +116,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -140,7 +131,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -152,7 +142,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -164,7 +153,6 @@
         <v-img
             class="banner-cube"
             cover
-            rounded="lg"
             aspect-ratio="1/1"
             src="/photos/main-page/1.jpg"
         />
@@ -192,6 +180,7 @@ export default {
   padding: 40px;
   .banner-cube {
     border: 3px solid #0c6001;
+    border-radius: 1.5em;
   }
 }
 
