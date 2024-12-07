@@ -3,12 +3,12 @@
     <div class="carousel-btn">
       <v-icon
         icon="mdi-menu-left"
-        color="green-darken-2"
+        color="#6EA06A"
         size="x-large"
         @click="onClickPrev"
       />
     </div>
-    <v-col cols="6">
+    <v-col>
       <v-carousel
           v-model="carouselValue"
           cycle
@@ -22,10 +22,10 @@
               :src="carouselPhoto"
               cover
               eager
-
           />
       </v-carousel>
       <router-link
+          class="darker-green-text"
           to="/gallery"
           text="Смотреть все"
       />
@@ -33,7 +33,7 @@
     <div class="carousel-btn">
       <v-icon
           icon="mdi-menu-right"
-          color="green-darken-2"
+          color="#6EA06A"
           size="x-large"
           @click="onClickNext"
       />
@@ -64,7 +64,7 @@
         />
       </v-row>
       <v-row>
-        <h1 class="green-text">
+        <h1 class="green-text thin-header">
           О нас
         </h1>
         <p class="darker-green-text">

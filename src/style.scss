@@ -63,6 +63,10 @@ a {
   color: black;
 }
 
+.thin-header {
+
+}
+
 .photo-cube {
   border: 3px solid $light-green;
   border-radius: 1.5em;
@@ -81,6 +85,13 @@ a {
 
 .green-text {
   color: $green-text-color;
+}
+
+h1 {
+  color: $green-text-color;
+  text-align: left;
+  font-weight: 100;
+  font-size: 32pt;
 }
 
 .main-page-text {
@@ -103,6 +114,10 @@ a {
   }
 }
 
+.header-app-bar {
+  border-bottom: 2px solid $green-text-color !important;
+}
+
 v-container, .v-container {
   padding: 3em !important;
   min-width: 100% !important;
@@ -110,7 +125,7 @@ v-container, .v-container {
 
 v-main, .v-main {
   margin: auto;
-  width: 80%;
+  width: 70%;
   min-height: auto;
   -webkit-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
   -moz-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
