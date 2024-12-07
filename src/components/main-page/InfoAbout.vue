@@ -1,67 +1,45 @@
 <template>
   <v-row>
-    <v-col cols="7">
+    <div class="carousel-btn">
+      <v-icon
+        icon="mdi-menu-left"
+        color="green-darken-2"
+        size="x-large"
+        @click="onClickPrev"
+      />
+    </div>
+    <v-col cols="6">
       <v-carousel
+          v-model="carouselValue"
+          cycle
           class="mb-2"
-          style="align-items: center; align-content: center"
           hide-delimiters
+          :show-arrows="false"
       >
-        <v-carousel-item
-            src="/photos/main-page/carousel/1.jpg"
-            max-width="80%"
-            class="mx-auto"
-            cover
-        />
-
-        <v-carousel-item
-            src="/photos/main-page/carousel/2.jpg"
-            max-width="80%"
-            class="m-auto"
-            cover
-        />
-
-        <v-carousel-item
-            src="/photos/main-page/carousel/3.jpg"
-            max-width="80%"
-            class="m-auto"
-            cover
-        />
-
-        <v-carousel-item
-            src="/photos/main-page/carousel/4.jpg"
-            max-width="80%"
-            class="m-auto"
-            cover
-        />
-
-        <v-carousel-item
-            src="/photos/main-page/carousel/5.jpg"
-            max-width="80%"
-            class="m-auto"
-            cover
-        />
-
-        <template #prev>
-          <v-icon
-            class="v-btn"
-            icon="mdi-menu-left"
-            color="green-darken-2"
+          <v-carousel-item
+              v-for="(photo) in carouselPhotosSrc"
+              :key="photo"
+              content-class="carousel-photo"
+              selected-class="carousel-photo"
+              :src="carouselPhoto"
+              cover
           />
-        </template>
-        <template #next>
-          <v-icon
-            icon="mdi-menu-right"
-            color="green-darken-2"
-          />
-        </template>
       </v-carousel>
       <router-link
           to="/gallery"
           text="Смотреть все"
       />
     </v-col>
+    <div class="carousel-btn">
+      <v-icon
+          icon="mdi-menu-right"
+          color="green-darken-2"
+          size="x-large"
+          @click="onClickNext"
+      />
+    </div>
 
-    <v-col class="text-about px-15">
+    <v-col class="text-about darker-green-text px-15 pt-5">
       <v-row>
         <v-img
             class="photo-cube mr-3"
@@ -86,21 +64,63 @@
         />
       </v-row>
       <v-row>
-        <h1> О нас </h1>
-        <p> Свою историю Оркестр Политеха начинает более века назад — еще на заре существования самого Политехнического университета в нём был учрежден студенческий оркестр, оркестр инженеров. Но оркестр просуществовал недолго ввиду различных исторических причин.</p>
+        <h1 class="green-text">
+          О нас
+        </h1>
+        <p class="darker-green-text">
+          Свою историю Оркестр Политеха начинает более века назад — еще на заре существования самого Политехнического
+          университета в нём был учрежден студенческий оркестр, оркестр инженеров. Но оркестр просуществовал недолго
+          ввиду различных исторических причин.
+        </p>
         <br>
-        <p> После 100 лет ожидания, в 2013 году, сообщество музыкантов было возрождено под руководством Дмитрия Мисюры, и в 2016 году молодой оркестр дал свой первый концерт!</p>
+        <p class="darker-green-text">
+          После 100 лет ожидания, в 2013 году, сообщество музыкантов было возрождено под руководством Дмитрия Мисюры,
+          и в 2016 году молодой оркестр дал свой первый концерт!
+        </p>
         <br>
-        <p> Активность оркестра растет ежегодно, музыканты регулярно дают большие сольные концерты и участвуют в совместных концертах с хором Полигимния и Камерным хором. Оркестр неоднократно занимал призовые места в различных музыкальных конкурсах, начиная с 2021 года. </p>
+        <p class="darker-green-text">
+          Активность оркестра растет ежегодно, музыканты регулярно дают большие сольные концерты и участвуют в
+          совместных концертах с хором Полигимния и Камерным хором. Оркестр неоднократно занимал призовые места в
+          различных музыкальных конкурсах, начиная с 2021 года.
+        </p>
       </v-row>
      </v-col>
   </v-row>
-
 </template>
 
 <script>
 export default {
-  name: "InfoAbout"
+  name: "InfoAbout",
+  data: () => {
+    return {
+      carouselValue: 0,
+      carouselPhotosSrc: [
+        '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'
+      ],
+      carouselPhotosWay: '/photos/main-page/carousel/',
+    }
+  },
+  computed: {
+    carouselPhoto() {
+      return this.carouselPhotosWay + this.carouselPhotosSrc[this.carouselValue];
+    }
+  },
+  methods: {
+    onClickPrev() {
+      if (this.carouselValue > 0) {
+        this.carouselValue--;
+      } else {
+        this.carouselValue = this.carouselPhotosSrc.length - 1;
+      }
+    },
+    onClickNext() {
+      if (this.carouselValue < this.carouselPhotosSrc.length - 1) {
+        this.carouselValue++;
+      } else {
+        this.carouselValue = 0;
+      }
+    },
+  },
 }
 </script>
 
@@ -108,19 +128,7 @@ export default {
 .text-about {
   text-align: justify;
 }
-
-.margin-auto {
-  margin: auto;
-}
-
-.v-carousel-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  max-width: 80%;
-  .v-img {
-    margin: auto !important;
-  }
+.carousel-btn {
+  margin-top: 15em;
 }
 </style>

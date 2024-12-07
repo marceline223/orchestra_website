@@ -7,10 +7,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
-            :src="getBannerPhotoSrc(1)"
+            :src="getBannerPhotoSrc(0)"
         />
       </v-col>
       <v-col
@@ -19,10 +18,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
-            :src="getBannerPhotoSrc(2)"
+            :src="getBannerPhotoSrc(1)"
         />
       </v-col>
       <v-col
@@ -39,10 +37,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
-            :src="getBannerPhotoSrc(3)"
+            :src="getBannerPhotoSrc(2)"
         />
       </v-col>
       <v-col
@@ -51,10 +48,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
-            :src="getBannerPhotoSrc(4)"
+            :src="getBannerPhotoSrc(3)"
         />
       </v-col>
     </v-row>
@@ -65,10 +61,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
-            :src="getBannerPhotoSrc(5)"
+            :src="getBannerPhotoSrc(4)"
         />
       </v-col>
       <v-col
@@ -76,7 +71,7 @@
           class="pa-3"
       >
         <h1 class="main-page-text banner-text">
-          это рандомный текст но потом мы что-то придумаем обязательно
+          какое-то очень красивое и ёмкое описание
         </h1>
       </v-col>
       <v-col
@@ -85,10 +80,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
-            :src="getBannerPhotoSrc(6)"
+            :src="getBannerPhotoSrc(5)"
         />
       </v-col>
     </v-row>
@@ -99,7 +93,17 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
+            aspect-ratio="1/1"
+            cover
+            :src="getBannerPhotoSrc(6)"
+        />
+      </v-col>
+      <v-col
+          cols="1"
+          class="pa-1"
+      >
+        <v-img
+            class="photo-cube"
             aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(7)"
@@ -111,22 +115,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(8)"
-        />
-      </v-col>
-      <v-col
-          cols="1"
-          class="pa-1"
-      >
-        <v-img
-            class="photo-cube"
-            :width="115"
-            aspect-ratio="1/1"
-            cover
-            :src="getBannerPhotoSrc(9)"
         />
       </v-col>
       <v-col
@@ -139,7 +130,17 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
+            aspect-ratio="1/1"
+            cover
+            :src="getBannerPhotoSrc(9)"
+        />
+      </v-col>
+      <v-col
+          cols="1"
+          class="pa-1"
+      >
+        <v-img
+            class="photo-cube"
             aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(10)"
@@ -151,22 +152,9 @@
       >
         <v-img
             class="photo-cube"
-            :width="115"
             aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(11)"
-        />
-      </v-col>
-      <v-col
-          cols="1"
-          class="pa-1"
-      >
-        <v-img
-            class="photo-cube"
-            :width="115"
-            aspect-ratio="1/1"
-            cover
-            :src="getBannerPhotoSrc(12)"
         />
       </v-col>
     </v-row>
@@ -186,8 +174,8 @@ export default {
     }
   },
   methods: {
-    getBannerPhotoSrc(number) {
-      return '/photos/main-page/banner/' + this.bannerPhotosSrc[number - 1];
+    getBannerPhotoSrc(index) {
+      return this.bannerPhotosWay + this.bannerPhotosSrc[index];
     }
   }
 }
@@ -203,5 +191,6 @@ export default {
 
 .banner-text {
   padding: 0 15px;
+  text-align: justify;
 }
 </style>
