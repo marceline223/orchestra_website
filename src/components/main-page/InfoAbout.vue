@@ -12,17 +12,17 @@
       <v-carousel
           v-model="carouselValue"
           cycle
-          class="mb-2"
+          class="mb-2 carousel-photo"
           hide-delimiters
           :show-arrows="false"
       >
           <v-carousel-item
               v-for="(photo) in carouselPhotosSrc"
               :key="photo"
-              content-class="carousel-photo"
-              selected-class="carousel-photo"
               :src="carouselPhoto"
               cover
+              eager
+
           />
       </v-carousel>
       <router-link
