@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#0C6001FF">
+  <v-app-bar color="#6EA06A">
     <v-app-bar-title>
       <router-link
         to="/"
@@ -11,30 +11,30 @@
     <v-spacer/>
 
     <v-btn
-      class="header-link"
+      class="header-link v-btn"
       text="Запись на прослушивание"
       @click="onClickShowModal"
     />
 
-    <router-link
+    <v-btn
       to="/news"
       class="header-link v-btn"
       text="Новости"
     />
 
-    <router-link
+    <v-btn
       to="/gallery"
       class="header-link v-btn"
       text="Галерея"
     />
 
-    <router-link
+    <v-btn
       to="/about"
       class="header-link v-btn"
       text="О нас"
     />
 
-    <router-link
+    <v-btn
       to="/contacts"
       class="header-link v-btn"
       text="Контакты"
