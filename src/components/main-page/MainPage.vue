@@ -1,13 +1,17 @@
 <template>
-  <banner-grid />
+  <div>
+    <banner-grid />
+    <info-about />
+  </div>
 </template>
 
 <script>
 import BannerGrid from "./BannerGrid.vue";
+import InfoAbout from "./InfoAbout.vue";
 
 export default {
   name: "MainPage",
-  components: {BannerGrid},
+  components: {InfoAbout, BannerGrid},
 }
 </script>
 

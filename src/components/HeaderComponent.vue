@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#0C6001FF">
+  <v-app-bar color="#6EA06A">
     <v-app-bar-title>
       <router-link
         to="/"
