@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#6EA06A">
+  <v-app-bar color="#6EA06A" class="header-app-bar">
     <template #prepend>
       <v-row class="header-icon align-center">
         <div>
@@ -119,4 +119,6 @@ export default {
     gap: 5px;
     margin-left: 100px;
   }
+
+
 </style>
