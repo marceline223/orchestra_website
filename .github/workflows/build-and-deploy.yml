@@ -23,11 +23,16 @@ jobs:
           dist
           Dockerfile
           compose.yaml
+    outputs:
+      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - env:
+          ARTIFACT_ID: ${{needs.job1.outputs.output1}}
+        run: echo "Artifact ID from previous job is $ARTIFACT_ID" # заменить сборку на сервере на использование артефактов
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -36,7 +41,8 @@ jobs:
             password: ${{ secrets.USER_PWD }}
             port: ${{ secrets.PORT }}
             script: |
-              cd /opt/polytech-orchestra-bot
+              cd /opt/orchestra-website
               git pull
-              chmod +x install_script.sh
-              ./install_script.sh
+              docker stop orchestra-client
+              docker rm orchestra-client
+              docker compose up -d --build
