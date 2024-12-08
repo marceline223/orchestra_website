@@ -1,0 +1,7 @@
+services:
+  orchestra-client:
+    build: .
+    container_name: "orchestra-client"
+    restart: always
+    ports:
+      - "8085:80"
