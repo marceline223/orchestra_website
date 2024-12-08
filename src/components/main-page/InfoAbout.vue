@@ -127,6 +127,7 @@ export default {
 <style lang="scss">
 .text-about {
   text-align: justify;
+  font-size: 12pt;
 }
 .carousel-btn {
   margin-top: 15em;
