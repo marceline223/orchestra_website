@@ -8,21 +8,17 @@
           alt="preview image"
       />
     </div>
-    <div class="preview-icon-container">
-      <v-btn
-        icon="mdi-menu-right"
-        variant="tonal"
-        color="#6EA06A"
-        @click="onClickShowVideo"
-      />
-    </div>
+    <video-watch-component />
   </div>
 </template>
 
 <script>
 
+import VideoWatchComponent from "./VideoWatchComponent.vue";
+
 export default {
-  name: "VideoComponent",
+  name: "VideoPreviewComponent",
+  components: {VideoWatchComponent},
   props: {
     src: {
       type: String,
@@ -39,11 +35,12 @@ export default {
   },
   data() {
     return {
+      isModalShown: false,
     }
   },
   methods: {
     onClickShowVideo() {
-      console.log('show');
+      this.isModalShown = true;
     }
   }
 }

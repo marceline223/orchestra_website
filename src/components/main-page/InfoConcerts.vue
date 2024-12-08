@@ -2,20 +2,20 @@
   <v-row>
     <v-col>
       <v-row class="my-0 video-row">
-        <video-component
+        <video-preview-component
             src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
             class="mx-3"
         />
-        <video-component
+        <video-preview-component
             src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
         />
       </v-row>
       <v-row class="mt-0 mb-5 video-row">
-        <video-component
+        <video-preview-component
             src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
             class="mx-3"
         />
-        <video-component
+        <video-preview-component
           src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
         />
       </v-row>
@@ -54,11 +54,11 @@
 </template>
 
 <script>
-import VideoComponent from "../VideoComponent.vue";
+import VideoPreviewComponent from "../VideoPreviewComponent.vue";
 
 export default {
   name: "InfoConcerts",
-  components: {VideoComponent},
+  components: {VideoPreviewComponent},
   data: () => {
     return {
       concerts: [
