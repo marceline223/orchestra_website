@@ -3,29 +3,29 @@
     <div class="carousel-btn">
       <v-icon
         icon="mdi-menu-left"
-        color="green-darken-2"
+        color="#6EA06A"
         size="x-large"
         @click="onClickPrev"
       />
     </div>
-    <v-col cols="6">
+    <v-col>
       <v-carousel
           v-model="carouselValue"
           cycle
-          class="mb-2"
+          class="mb-2 carousel-photo"
           hide-delimiters
           :show-arrows="false"
       >
           <v-carousel-item
               v-for="(photo) in carouselPhotosSrc"
               :key="photo"
-              content-class="carousel-photo"
-              selected-class="carousel-photo"
               :src="carouselPhoto"
               cover
+              eager
           />
       </v-carousel>
       <router-link
+          class="darker-green-text"
           to="/gallery"
           text="Смотреть все"
       />
@@ -33,7 +33,7 @@
     <div class="carousel-btn">
       <v-icon
           icon="mdi-menu-right"
-          color="green-darken-2"
+          color="#6EA06A"
           size="x-large"
           @click="onClickNext"
       />
@@ -64,7 +64,7 @@
         />
       </v-row>
       <v-row>
-        <h1 class="green-text">
+        <h1 class="green-text thin-header">
           О нас
         </h1>
         <p class="darker-green-text">
@@ -127,6 +127,7 @@ export default {
 <style lang="scss">
 .text-about {
   text-align: justify;
+  font-size: 12pt;
 }
 .carousel-btn {
   margin-top: 15em;
