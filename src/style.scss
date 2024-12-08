@@ -45,14 +45,8 @@ button {
   font-size: 1em;
   font-weight: 400;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .card {
@@ -83,6 +77,13 @@ a {
   color: $green-text-color;
 }
 
+h1 {
+  color: $green-text-color;
+  text-align: left;
+  font-weight: 100;
+  font-size: 32pt;
+}
+
 .main-page-text {
   color: $green-text-color;
   letter-spacing: 1.5pt;
@@ -103,6 +104,10 @@ a {
   }
 }
 
+.header-app-bar {
+  border-bottom: 2px solid $green-text-color !important;
+}
+
 v-container, .v-container {
   padding: 3em !important;
   min-width: 100% !important;
@@ -110,7 +115,7 @@ v-container, .v-container {
 
 v-main, .v-main {
   margin: auto;
-  width: 80%;
+  width: 70%;
   min-height: auto;
   -webkit-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
   -moz-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);

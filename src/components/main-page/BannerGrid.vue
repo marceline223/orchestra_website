@@ -1,13 +1,16 @@
 <template>
   <v-col class="banner">
-    <v-row align="center">
+    <v-row
+        align="center"
+        justify="center"
+        no-gutters
+    >
       <v-col
           cols="1"
           class="pa-1"
       >
         <v-img
             class="photo-cube"
-            aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(0)"
         />
@@ -18,7 +21,6 @@
       >
         <v-img
             class="photo-cube"
-            aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(1)"
         />
@@ -37,7 +39,6 @@
       >
         <v-img
             class="photo-cube"
-            aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(2)"
         />
@@ -48,20 +49,22 @@
       >
         <v-img
             class="photo-cube"
-            aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(3)"
         />
       </v-col>
     </v-row>
-    <v-row align="center">
+    <v-row
+        align="center"
+        justify="center"
+        no-gutters
+    >
       <v-col
           cols="1"
           class="pa-1"
       >
         <v-img
             class="photo-cube"
-            aspect-ratio="1/1"
             cover
             :src="getBannerPhotoSrc(4)"
         />
@@ -71,7 +74,10 @@
           class="pa-3"
       >
         <h1 class="main-page-text banner-text">
-          какое-то очень красивое и ёмкое описание
+          какое-то очень
+        </h1>
+        <h1 class="main-page-text banner-text">
+          красивое и ёмкое описание
         </h1>
       </v-col>
       <v-col
@@ -86,7 +92,11 @@
         />
       </v-col>
     </v-row>
-    <v-row align="center">
+    <v-row
+      align="center"
+      justify="center"
+      no-gutters
+    >
       <v-col
           cols="1"
           class="pa-1"
@@ -121,7 +131,7 @@
         />
       </v-col>
       <v-col
-          cols="6"
+
           class="pa-1"
       />
       <v-col
@@ -184,9 +194,13 @@ export default {
 
 <style scoped lang="scss">
 .banner {
-  padding: 60px;
+  //padding: 60px;
   margin-bottom: 150px;
   margin-top: 50px;
+
+  .v-col {
+    padding: 3px !important;
+  }
 }
 
 .banner-text {
