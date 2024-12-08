@@ -1,0 +1,48 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 20.14.0
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.14.0
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --force
+    - uses: actions/upload-artifact@v4
+      with:
+        name: compiled-code
+        path: |
+          dist
+          Dockerfile
+          compose.yaml
+    outputs:
+      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          ARTIFACT_ID: ${{needs.job1.outputs.output1}}
+        run: echo "Artifact ID from previous job is $ARTIFACT_ID" # заменить сборку на сервере на использование артефактов
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+            host: ${{ secrets.DEPLOY_SERVER }}
+            username: ${{ secrets.USER }}
+            password: ${{ secrets.USER_PWD }}
+            port: ${{ secrets.PORT }}
+            script: |
+              cd /opt/orchestra-website
+              git pull
+              docker stop orchestra-client
+              docker rm orchestra-client
+              docker compose up -d --build
