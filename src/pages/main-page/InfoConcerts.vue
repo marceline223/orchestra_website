@@ -3,26 +3,26 @@
     <v-col>
       <v-row class="my-0 video-row">
         <video-preview-component
-            src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
-            class="mx-3"
+          video-src="https://vkvideo.ru/video-147503153_456239053"
+          class="mx-3"
         />
         <video-preview-component
-            src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
+          video-src="https://vkvideo.ru/video-147503153_456239053"
         />
       </v-row>
       <v-row class="mt-0 mb-5 video-row">
         <video-preview-component
-            src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
-            class="mx-3"
+          video-src="https://vkvideo.ru/video-147503153_456239053"
+          class="mx-3"
         />
         <video-preview-component
-          src="https://vk.com/video_ext.php?oid=-147503153&id=456239055"
+          video-src="https://vkvideo.ru/video-147503153_456239053"
         />
       </v-row>
       <router-link
-          class="darker-green-text my-0"
-          to="/gallery"
-          text="Смотреть все"
+        class="darker-green-text my-0"
+        to="/gallery"
+        text="Смотреть все"
       />
     </v-col>
     <v-col>
@@ -30,9 +30,9 @@
         Концерты
       </h1>
       <v-row
-          v-for="concert in concerts"
-          :key="concert.id"
-          class="concert-container"
+        v-for="concert in concerts"
+        :key="concert.id"
+        class="concert-container"
       >
         <v-col class="green-text">
           {{ concert.date }}
@@ -45,16 +45,16 @@
         </v-col>
       </v-row>
       <router-link
-          class="darker-green-text"
-          to="/gallery"
-          text="Смотреть все"
+        class="darker-green-text"
+        to="/gallery"
+        text="Смотреть все"
       />
     </v-col>
   </v-row>
 </template>
 
 <script>
-import VideoPreviewComponent from "../VideoPreviewComponent.vue";
+import VideoPreviewComponent from "../../components/VideoPreviewComponent.vue";
 
 export default {
   name: "InfoConcerts",
