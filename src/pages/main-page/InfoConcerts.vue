@@ -3,20 +3,24 @@
     <v-col>
       <v-row class="my-0 video-row">
         <video-preview-component
-          video-src="https://vkvideo.ru/video-147503153_456239053"
+          :video-src="videoExamples[0].videoSrc"
+          :preview-src="videoExamples[0].previewSrc"
           class="mx-3"
         />
         <video-preview-component
-          video-src="https://vkvideo.ru/video-147503153_456239053"
+          :video-src="videoExamples[1].videoSrc"
+          :preview-src="videoExamples[1].previewSrc"
         />
       </v-row>
       <v-row class="mt-0 mb-5 video-row">
         <video-preview-component
-          video-src="https://vkvideo.ru/video-147503153_456239053"
+          :video-src="videoExamples[2].videoSrc"
+          :preview-src="videoExamples[2].previewSrc"
           class="mx-3"
         />
         <video-preview-component
-          video-src="https://vkvideo.ru/video-147503153_456239053"
+          :video-src="videoExamples[3].videoSrc"
+          :preview-src="videoExamples[3].previewSrc"
         />
       </v-row>
       <router-link
@@ -73,6 +77,28 @@ export default {
           date: "16 января",
           name: "Концерт2",
           placeName: "Белый зал",
+        }
+      ],
+      videoExamples: [
+        {
+          id: 0,
+          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239053&hd=4&autoplay=1",
+          previewSrc: "/photos/main-page/carousel/1.jpg",
+        },
+        {
+          id: 1,
+          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239028&hd=4&autoplay=1",
+          previewSrc: "/photos/main-page/carousel/2.jpg",
+        },
+        {
+          id: 2,
+          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239031&hd=4&autoplay=1",
+          previewSrc: "/photos/main-page/carousel/3.jpg",
+        },
+        {
+          id: 3,
+          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239058&hd=4&autoplay=1",
+          previewSrc: "/photos/main-page/carousel/4.jpg",
         }
       ]
     }

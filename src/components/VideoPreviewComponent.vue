@@ -4,11 +4,15 @@
       <img
           class="preview-image"
           :src="previewSrc"
-          :width="width"
+          :width="previewWidth"
           alt="preview image"
       />
     </div>
-    <video-watch-component />
+    <video-watch-component
+        :video-width="videoWidth"
+        :video-height="videoHeight"
+        :video-src="videoSrc"
+    />
   </div>
 </template>
 
@@ -20,7 +24,7 @@ export default {
   name: "VideoPreviewComponent",
   components: {VideoWatchComponent},
   props: {
-    src: {
+    videoSrc: {
       type: String,
       required: true,
     },
@@ -28,9 +32,17 @@ export default {
       type: String,
       default: 'video/preview/no-video.png'
     },
-    width: {
+    previewWidth: {
       type: Number,
-      default: 240,
+      default: 220,
+    },
+    videoWidth: {
+      type: String,
+      default: "1080",
+    },
+    videoHeight: {
+      type: String,
+      default: "900",
     }
   },
   data() {
