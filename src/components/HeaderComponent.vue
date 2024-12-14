@@ -50,43 +50,25 @@
     />
   </v-app-bar>
 
-  <v-dialog
-      v-model="isModalShown"
-      width="auto"
-  >
-    <v-card
-        max-width="400"
-        text="Здесь будет форма записи на прослушивание"
-        title="Записаться на прослушивание"
-    >
-      <template #actions>
-        <div class="ms-auto">
-          <v-btn
-              text="Отмена"
-              @click="isModalShown = false"
-          />
-          <v-btn
-              text="Отправить"
-              variant="tonal"
-              @click="isModalShown = false"
-          />
-        </div>
-      </template>
-    </v-card>
-  </v-dialog>
+  <sign-up-for-audition-window
+    :is-window-active="isWindowActive"
+    @close="isWindowActive = false"
+  />
 </template>
 
 <script>
+import SignUpForAuditionWindow from "./SignUpForAuditionWindow.vue";
 export default {
   name: "HeaderComponent",
+  components: {SignUpForAuditionWindow},
   data() {
     return {
-      isModalShown: false,
+      isWindowActive: false,
     }
   },
   methods: {
     onClickShowModal() {
-      this.isModalShown = true;
+      this.isWindowActive = true;
     }
   }
 }
