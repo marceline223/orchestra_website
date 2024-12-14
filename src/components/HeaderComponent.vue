@@ -1,5 +1,8 @@
 <template>
-  <v-app-bar color="#6EA06A" class="header-app-bar">
+  <v-app-bar
+    color="#6EA06A"
+    class="header-app-bar"
+  >
     <template #prepend>
       <v-row class="header-icon align-center">
         <div>
