@@ -4,22 +4,26 @@
       <v-row class="my-0 video-row">
         <video-preview-component
           :video-src="videoExamples[0].videoSrc"
+          :video-title="videoExamples[0].videoTitle"
           :preview-src="videoExamples[0].previewSrc"
           class="mx-3"
         />
         <video-preview-component
           :video-src="videoExamples[1].videoSrc"
+          :video-title="videoExamples[1].videoTitle"
           :preview-src="videoExamples[1].previewSrc"
         />
       </v-row>
-      <v-row class="mt-0 mb-5 video-row">
+      <v-row class="mt-0 mb-8 video-row">
         <video-preview-component
           :video-src="videoExamples[2].videoSrc"
+          :video-title="videoExamples[2].videoTitle"
           :preview-src="videoExamples[2].previewSrc"
           class="mx-3"
         />
         <video-preview-component
           :video-src="videoExamples[3].videoSrc"
+          :video-title="videoExamples[3].videoTitle"
           :preview-src="videoExamples[3].previewSrc"
         />
       </v-row>
@@ -83,21 +87,25 @@ export default {
         {
           id: 0,
           videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239053&hd=4&autoplay=1",
+          videoTitle: "К.Дженкинс - Palladio",
           previewSrc: "/photos/main-page/carousel/1.jpg",
         },
         {
           id: 1,
           videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239028&hd=4&autoplay=1",
+          videoTitle: "А.Хачатурян - Танец с саблями",
           previewSrc: "/photos/main-page/carousel/2.jpg",
         },
         {
           id: 2,
           videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239031&hd=4&autoplay=1",
+          videoTitle: "К.Сен-Санс - Танец вакханок",
           previewSrc: "/photos/main-page/carousel/3.jpg",
         },
         {
           id: 3,
           videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239058&hd=4&autoplay=1",
+          videoTitle: "Б.Кондин, О.Кондина - Гимн Политехнического университета",
           previewSrc: "/photos/main-page/carousel/4.jpg",
         }
       ]

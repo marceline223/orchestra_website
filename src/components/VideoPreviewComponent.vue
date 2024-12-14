@@ -13,6 +13,9 @@
         :video-height="videoHeight"
         :video-src="videoSrc"
     />
+    <h6 class="video-title green-text">
+      {{ videoTitle }}
+    </h6>
   </div>
 </template>
 
@@ -43,6 +46,10 @@ export default {
     videoHeight: {
       type: String,
       default: "900",
+    },
+    videoTitle: {
+      type: String,
+      default: null,
     }
   },
   data() {
@@ -74,8 +81,8 @@ export default {
   grid-area: 1 / 1;
 }
 
-.preview-icon-container {
-  grid-area: 1 / 1;
-  align-self: center;
+.video-title {
+  text-wrap: wrap;
+  max-width: 220px;
 }
 </style>

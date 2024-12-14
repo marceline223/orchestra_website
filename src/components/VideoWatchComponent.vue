@@ -60,4 +60,9 @@ export default {
   color: #6EA06A;
   background-color: white;
 }
+
+.preview-icon-container {
+  grid-area: 1 / 1;
+  align-self: center;
+}
 </style>
