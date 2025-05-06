@@ -1,66 +1,68 @@
 <template>
   <v-row>
-    <div class="carousel-btn">
-      <v-icon
-        icon="mdi-menu-left"
-        color="#6EA06A"
-        size="x-large"
-        @click="onClickPrev"
-      />
-    </div>
-    <v-col>
-      <v-carousel
-          v-model="carouselValue"
-          cycle
-          class="mb-2 carousel-photo"
-          hide-delimiters
-          :show-arrows="false"
-      >
-          <v-carousel-item
+    <v-col class="d-flex">
+        <div class="carousel-btn">
+          <v-icon
+            icon="mdi-menu-left"
+            color="#6EA06A"
+            size="x-large"
+            @click="onClickPrev"
+          />
+        </div>
+        <div style="width: 100%">
+          <v-carousel
+            v-model="carouselValue"
+            cycle
+            class="mb-2 carousel-photo"
+            hide-delimiters
+            :show-arrows="false"
+          >
+            <v-carousel-item
               v-for="(photo) in carouselPhotosSrc"
               :key="photo"
               :src="carouselPhoto"
               cover
               eager
+            />
+          </v-carousel>
+          <router-link
+            class="darker-green-text"
+            to="/gallery"
+            text="Смотреть все"
           />
-      </v-carousel>
-      <router-link
-          class="darker-green-text"
-          to="/gallery"
-          text="Смотреть все"
-      />
+        </div>
+        <div class="carousel-btn">
+          <v-icon
+            icon="mdi-menu-right"
+            color="#6EA06A"
+            size="x-large"
+            @click="onClickNext"
+          />
+        </div>
     </v-col>
-    <div class="carousel-btn">
-      <v-icon
-          icon="mdi-menu-right"
-          color="#6EA06A"
-          size="x-large"
-          @click="onClickNext"
-      />
-    </div>
 
-    <v-col class="text-about darker-green-text px-15 pt-5">
+    <v-col class="text-about darker-green-text pt-5 px-5 ml-10">
       <v-row>
         <v-img
-            class="photo-cube mr-3"
-            cover
-            aspect-ratio="2/1"
-            width="50px"
-            src="/photos/main-page/2.jpg"
+          class="photo-cube mr-3"
+          cover
+          aspect-ratio="2/1"
+          width="50px"
+          src="/photos/main-page/2.jpg"
         />
         <v-img
-            class="photo-cube mr-3"
-            cover
-            aspect-ratio="2/1"
-            width="50px"
-            src="/photos/main-page/2.jpg"
+          class="photo-cube mr-3"
+          cover
+          aspect-ratio="2/1"
+          width="50px"
+          src="/photos/main-page/2.jpg"
         />
         <v-img
-            class="photo-cube"
-            cover
-            aspect-ratio="2/1"
-            width="50px"
-            src="/photos/main-page/2.jpg"
+          class="photo-cube"
+          cover
+          aspect-ratio="2/1"
+          width="50px"
+          src="/photos/main-page/2.jpg"
         />
       </v-row>
       <v-row>
@@ -84,7 +86,7 @@
           различных музыкальных конкурсах, начиная с 2021 года.
         </p>
       </v-row>
-     </v-col>
+    </v-col>
   </v-row>
 </template>
 
@@ -129,6 +131,7 @@ export default {
   text-align: justify;
   font-size: 12pt;
 }
+
 .carousel-btn {
   margin-top: 15em;
 }

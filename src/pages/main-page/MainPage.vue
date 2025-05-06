@@ -3,11 +3,11 @@
     <banner-grid />
     <info-about />
     <info-concerts />
-    <h1 class="text-center">
+    <h2 class="text-center">
       Хочешь присоединиться?
-    </h1>
+    </h2>
     <v-btn
-      class="main-page-button pa-3"
+      class="main-page-button light-green-button pa-3 mt-5"
       text="Записаться в оркестр"
       width="100%"
       height="100%"
@@ -37,12 +37,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.main-page-button {
-  background-color: #6EA06A;
-  color: white;
-  text-transform: none;
-  font-size: 26pt;
-}
-</style>

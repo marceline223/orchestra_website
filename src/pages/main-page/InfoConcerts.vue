@@ -33,7 +33,7 @@
         text="Смотреть все"
       />
     </v-col>
-    <v-col>
+    <v-col class="ml-5">
       <h1 class="mt-10">
         Концерты
       </h1>
@@ -125,5 +125,6 @@ export default {
 
 .video-row {
   height: 35% !important;
+  justify-content: space-around;
 }
 </style>

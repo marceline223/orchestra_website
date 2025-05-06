@@ -104,6 +104,4 @@ export default {
     gap: 5px;
     margin-left: 100px;
   }
-
-
 </style>

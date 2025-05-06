@@ -5,13 +5,26 @@ $green-text-color: #064B00;
 $footer-color: #D9F3D0;
 $darker-green-text-color: #144311;
 
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  /*a:hover {*/
+  /*  color: #747bff;*/
+  /*}*/
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
 :root {
   font-family: 'Corsa Grotesk', serif;
   line-height: 1.5;
   font-weight: 400;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: $footer-color;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -63,10 +76,8 @@ a {
 }
 
 .carousel-photo {
-  .v-img {
-    border-radius: 5em;
-    border: 3px solid $light-green;
-  }
+  border-radius: 5em;
+  border: 3px solid $light-green;
 }
 
 .darker-green-text {
@@ -77,11 +88,26 @@ a {
   color: $green-text-color;
 }
 
+.light-green-text {
+  color: $light-green;
+}
+
+.text-left {
+  text-align: left;
+}
+
 h1 {
   color: $green-text-color;
   text-align: left;
   font-weight: 100;
   font-size: 32pt;
+}
+
+h2 {
+  color: $green-text-color;
+  text-align: left;
+  font-weight: 100;
+  font-size: 24pt;
 }
 
 .main-page-text {
@@ -93,11 +119,22 @@ h1 {
   line-height: 1;
 }
 
+.main-page-button {
+  text-transform: none;
+  font-size: 24pt;
+}
+
+.light-green-button {
+  background-color: $light-green !important;
+  color: white !important;
+}
+
 .footer-component {
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
-  border-top: 3px solid $green-text-color !important;
+  border-top: 4px solid $light-green !important;
+  padding-top: 1em !important;
 
   p {
     color: $darker-green-text-color;
@@ -113,30 +150,47 @@ v-container, .v-container {
   min-width: 100% !important;
 }
 
+.v-application {
+  height: 200% !important;
+}
+
 v-main, .v-main {
-  margin: auto;
-  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+  width: 80%;
   min-height: auto;
   -webkit-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
   -moz-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
   box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
 }
 
+
+@media (min-width: 1920px) {
+  v-main, .v-main {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1919.99px) {
+  v-main, .v-main {
+    width: 80%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199.99px) {
+  v-main, .v-main {
+    width: 90%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 899.99px) {
+  v-main, .v-main {
+    width: 95%;
+  }
+}
+
 #app {
   margin: 0 auto;
   text-align: center;
   min-width: 100%;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  /*a:hover {*/
-  /*  color: #747bff;*/
-  /*}*/
-  button {
-    background-color: #f9f9f9;
-  }
 }
