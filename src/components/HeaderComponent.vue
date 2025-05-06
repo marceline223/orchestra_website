@@ -55,7 +55,7 @@
 
   <sign-up-for-audition-window
     :is-window-active="isWindowActive"
-    @close="isWindowActive = false"
+    @close="onClickCloseModal"
   />
 </template>
 
@@ -72,6 +72,10 @@ export default {
   methods: {
     onClickShowModal() {
       this.isWindowActive = true;
+    },
+    onClickCloseModal() {
+      console.log('close 2');
+      this.isWindowActive = false;
     }
   }
 }
