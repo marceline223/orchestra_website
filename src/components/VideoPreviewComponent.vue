@@ -2,18 +2,21 @@
   <div class="preview-container">
     <div class="preview-image-container">
       <img
-          class="preview-image"
-          :src="previewSrc"
-          :width="previewWidth"
-          alt="preview image"
+        class="preview-image"
+        :src="previewSrc"
+        :width="previewWidth"
+        alt="preview image"
       />
     </div>
     <video-watch-component
-        :video-width="videoWidth"
-        :video-height="videoHeight"
-        :video-src="videoSrc"
+      :video-width="videoWidth"
+      :video-height="videoHeight"
+      :video-src="videoSrc"
     />
-    <h6 class="video-title green-text">
+    <h6
+      class="video-title green-text text-wrap"
+      :style="'max-width: ' + previewWidth + 'px'"
+    >
       {{ videoTitle }}
     </h6>
   </div>
@@ -37,15 +40,15 @@ export default {
     },
     previewWidth: {
       type: Number,
-      default: 220,
+      default: 250,
     },
     videoWidth: {
       type: String,
-      default: "1080",
+      default: '1080',
     },
     videoHeight: {
       type: String,
-      default: "900",
+      default: '900',
     },
     videoTitle: {
       type: String,
@@ -57,16 +60,12 @@ export default {
       isModalShown: false,
     }
   },
-  methods: {
-    onClickShowVideo() {
-      this.isModalShown = true;
-    }
-  }
+  getters: {}
 }
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .preview-container {
   display: grid;
   margin: 50px 0;
@@ -79,10 +78,5 @@ export default {
 
 .preview-image-container {
   grid-area: 1 / 1;
-}
-
-.video-title {
-  text-wrap: wrap;
-  max-width: 220px;
 }
 </style>
