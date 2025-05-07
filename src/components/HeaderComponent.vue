@@ -25,30 +25,31 @@
     <v-btn
       class="header-link"
       text="Запись на прослушивание"
+      variant="tonal"
       @click="onClickShowModal"
     />
 
     <router-link
       to="/news"
-      class="header-link"
+      class="header-link router-header-link"
       text="Новости"
     />
 
     <router-link
       to="/gallery"
-      class="header-link"
+      class="header-link router-header-link"
       text="Галерея"
     />
 
     <router-link
       to="/about"
-      class="header-link"
+      class="header-link router-header-link"
       text="О нас"
     />
 
     <router-link
       to="/contacts"
-      class="header-link"
+      class="header-link router-header-link"
       text="Контакты"
     />
   </v-app-bar>
@@ -88,8 +89,11 @@ export default {
     font-weight: 300;
     font-size: 1.1em;
     color: white;
-    margin: 0 15px;
     letter-spacing: 1.5px;
+  }
+
+  .router-header-link {
+    margin: 0 15px;
   }
 
   .header-title-text {
@@ -102,7 +106,6 @@ export default {
     text-align: left;
     font-weight: 300;
   }
-
   .header-icon {
     flex-wrap: wrap;
     gap: 5px;

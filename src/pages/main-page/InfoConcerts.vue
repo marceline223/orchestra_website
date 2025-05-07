@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row class="info-concerts-row">
     <v-col>
       <v-row class="my-0 video-row">
         <video-preview-component
@@ -126,5 +126,9 @@ export default {
 .video-row {
   height: 35% !important;
   justify-content: space-around;
+}
+
+.info-concerts-row {
+  max-height: 600px !important;
 }
 </style>
