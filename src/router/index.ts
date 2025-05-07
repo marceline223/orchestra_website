@@ -5,6 +5,7 @@ import AboutUsPage from "../pages/AboutUsPage.vue";
 import ContactsPage from "../pages/ContactsPage.vue";
 import GalleryPage from "../pages/GalleryPage.vue";
 import NewsPage from "../pages/NewsPage.vue";
+import ErrorPage from "../pages/ErrorPage.vue";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/contacts',
     name: 'Контакты',
     component: ContactsPage,
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'Страница не найдена',
+    component: ErrorPage,
   },
 ]
 
