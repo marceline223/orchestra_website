@@ -29,7 +29,8 @@
             {{ member.name.lastName }}
           </h3>
           <div
-            v-for="position in member.position"
+            v-for="(position, index) in member.position"
+            :key="index"
             class="darker-green-text text-center photo-label lh-small"
           >
             {{ position }}

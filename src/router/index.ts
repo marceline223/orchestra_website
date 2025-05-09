@@ -7,6 +7,7 @@ import NewsPage from "../pages/NewsPage.vue";
 import AboutAuditionPage from "../pages/AboutAuditionPage.vue";
 import ErrorPage from "../pages/ErrorPage.vue";
 import MembersPage from "../pages/about-us/MembersPage.vue";
+import HistoryPage from "../pages/about-us/HistoryPage.vue";
 
 const routes = [
   {

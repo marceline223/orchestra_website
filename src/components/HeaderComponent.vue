@@ -41,7 +41,7 @@
     />
 
     <v-menu>
-      <template v-slot:activator="{ props }">
+      <template #activator="{ props }">
         <v-btn
           class="header-link"
           text="О нас"
@@ -59,7 +59,7 @@
           class="darker-green-text"
         />
         <v-list-item
-          to="members"
+          to="history"
           title="История"
           class="darker-green-text"
         />
