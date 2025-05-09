@@ -50,7 +50,7 @@
           </div>
         </v-col>
       </v-row>
-      <v-col class="d-flex flex-column pt-5">
+      <v-col class="d-flex flex-column pt-3">
         <h6 class="green-text">
           Оркестр Политеха
         </h6>
