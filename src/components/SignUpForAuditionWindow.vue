@@ -28,7 +28,7 @@
               label="Фамилия"
               clearable
               variant="underlined"
-              :rules="[rules.required]"
+              :rules="[rules.required, rules.onlyLetters]"
               density="comfortable"
             />
             <v-text-field
@@ -37,7 +37,7 @@
               label="Имя"
               clearable
               variant="underlined"
-              :rules="[rules.required]"
+              :rules="[rules.required, rules.onlyLetters]"
               density="comfortable"
             />
             <v-row class="px-3 my-1">
@@ -48,7 +48,7 @@
                 label="Отчество"
                 clearable
                 variant="underlined"
-                :rules="[rules.surnameRequired]"
+                :rules="[rules.surnameRequired, rules.onlyLetters]"
                 density="comfortable"
               />
               <v-checkbox

@@ -9,14 +9,14 @@
           <h6>
             <router-link
               class="green-text text-left"
-              to="/contacts"
+              to="contacts"
               text="Контакты"
             />
           </h6>
           <h6>
             <router-link
               class="green-text"
-              to="/contacts"
+              to="contacts"
               text="Для организаторов"
             />
           </h6>

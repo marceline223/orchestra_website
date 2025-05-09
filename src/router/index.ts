@@ -5,6 +5,7 @@ import AboutUsPage from "../pages/AboutUsPage.vue";
 import ContactsPage from "../pages/ContactsPage.vue";
 import GalleryPage from "../pages/GalleryPage.vue";
 import NewsPage from "../pages/NewsPage.vue";
+import AboutAuditionPage from "../pages/AboutAuditionPage.vue";
 import ErrorPage from "../pages/ErrorPage.vue";
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     path: '/contacts',
     name: 'Контакты',
     component: ContactsPage,
+  },
+  {
+    path: '/audition',
+    name: 'О прослушивании',
+    component: AboutAuditionPage,
   },
   {
     path: '/:catchAll(.*)',

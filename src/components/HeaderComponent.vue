@@ -23,62 +23,40 @@
     <v-spacer/>
 
     <v-btn
+      to="audition"
       class="header-link"
-      text="Запись на прослушивание"
-      variant="tonal"
-      @click="onClickShowModal"
+      text="О прослушиваниях"
     />
 
-    <router-link
-      to="/news"
-      class="header-link router-header-link"
+    <v-btn
+      to="news"
+      class="header-link"
       text="Новости"
     />
 
-    <router-link
-      to="/gallery"
-      class="header-link router-header-link"
+    <v-btn
+      to="gallery"
+      class="header-link"
       text="Галерея"
     />
 
-    <router-link
-      to="/about"
-      class="header-link router-header-link"
+    <v-btn
+      to="about"
+      class="header-link"
       text="О нас"
     />
 
-    <router-link
-      to="/contacts"
-      class="header-link router-header-link"
+    <v-btn
+      to="contacts"
+      class="header-link"
       text="Контакты"
     />
   </v-app-bar>
-
-  <sign-up-for-audition-window
-    :is-window-active="isWindowActive"
-    @close="onClickCloseModal"
-  />
 </template>
 
 <script>
-import SignUpForAuditionWindow from "./SignUpForAuditionWindow.vue";
 export default {
   name: "HeaderComponent",
-  components: {SignUpForAuditionWindow},
-  data() {
-    return {
-      isWindowActive: false,
-    }
-  },
-  methods: {
-    onClickShowModal() {
-      this.isWindowActive = true;
-    },
-    onClickCloseModal() {
-      console.log('close 2');
-      this.isWindowActive = false;
-    }
-  }
 }
 </script>
 
@@ -90,10 +68,6 @@ export default {
     font-size: 1.1em;
     color: white;
     letter-spacing: 1.5px;
-  }
-
-  .router-header-link {
-    margin: 0 15px;
   }
 
   .header-title-text {

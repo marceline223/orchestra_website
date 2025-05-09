@@ -80,6 +80,11 @@ a {
   border: 3px solid $light-green;
 }
 
+.rounded-photo {
+  border-radius: 8em;
+  border: 3px solid $light-green;
+}
+
 .darker-green-text {
   color: $darker-green-text-color;
 }
@@ -97,6 +102,8 @@ h1 {
   text-align: left;
   font-weight: 100;
   font-size: 32pt;
+  line-height: 1.2;
+  margin-bottom: 8px;
 }
 
 h2 {
@@ -116,8 +123,9 @@ h2 {
 }
 
 .main-page-button {
-  text-transform: none;
-  font-size: 24pt;
+  text-transform: none !important;
+  font-weight: 50 !important;
+  font-size: 20pt!important;
 }
 
 .light-green-button {
