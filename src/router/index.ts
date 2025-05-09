@@ -1,12 +1,12 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 import MainPage from "../pages/main-page/MainPage.vue";
-import AboutUsPage from "../pages/AboutUsPage.vue";
 import ContactsPage from "../pages/ContactsPage.vue";
 import GalleryPage from "../pages/GalleryPage.vue";
 import NewsPage from "../pages/NewsPage.vue";
 import AboutAuditionPage from "../pages/AboutAuditionPage.vue";
 import ErrorPage from "../pages/ErrorPage.vue";
+import MembersPage from "../pages/about-us/MembersPage.vue";
 
 const routes = [
   {
@@ -25,9 +25,14 @@ const routes = [
     component: GalleryPage,
   },
   {
-    path: '/about',
-    name: 'О нас',
-    component: AboutUsPage,
+    path: '/members',
+    name: 'Участники',
+    component: MembersPage,
+  },
+  {
+    path: '/history',
+    name: 'История',
+    component: HistoryPage,
   },
   {
     path: '/contacts',

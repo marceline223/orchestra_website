@@ -81,12 +81,12 @@ a {
 }
 
 .rounded-photo {
-  border-radius: 8em;
-  border: 3px solid $light-green;
+  border-radius: 30%;
+  border: 5px solid $light-green;
 }
 
 .darker-green-text {
-  color: $darker-green-text-color;
+  color: $darker-green-text-color !important;
 }
 
 .green-text {
@@ -109,8 +109,19 @@ h1 {
 h2 {
   color: $green-text-color;
   text-align: left;
-  font-weight: 100;
+  font-weight: lighter;
   font-size: 24pt;
+}
+
+h3 {
+  color: $darker-green-text-color;
+  text-align: left;
+  font-weight: lighter;
+  font-size: 16pt;
+}
+
+.lh-small {
+  line-height: 1.1;
 }
 
 .main-page-text {

@@ -40,11 +40,32 @@
       text="Галерея"
     />
 
-    <v-btn
-      to="about"
-      class="header-link"
-      text="О нас"
-    />
+    <v-menu>
+      <template v-slot:activator="{ props }">
+        <v-btn
+          class="header-link"
+          text="О нас"
+          v-bind="props"
+        />
+      </template>
+
+      <v-list
+        class="pa-0"
+        variant="plain"
+      >
+        <v-list-item
+          to="members"
+          title="Состав оркестра"
+          class="darker-green-text"
+        />
+        <v-list-item
+          to="members"
+          title="История"
+          class="darker-green-text"
+        />
+      </v-list>
+    </v-menu>
+
 
     <v-btn
       to="contacts"
@@ -81,3 +102,5 @@
   margin-left: 100px;
 }
 </style>
+<script setup lang="ts">
+</script>
