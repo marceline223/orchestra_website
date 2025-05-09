@@ -1,11 +1,9 @@
 <template>
-  <h2>О нас</h2>
+  <h1>Состав оркестра</h1>
 </template>
 
-<script>
-export default {
-  name: "AboutUsPage"
-}
+<script setup>
+
 </script>
 
 <style scoped>

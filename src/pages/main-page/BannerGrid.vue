@@ -171,26 +171,19 @@
   </v-col>
 </template>
 
-<script>
-export default {
-  name: "BannerGrid",
-  data() {
-    return {
-      bannerPhotosSrc: [
-        '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
-        '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg'
-      ],
-      bannerPhotosWay: '/photos/main-page/banner/',
-    }
-  },
-  methods: {
-    getBannerPhotoSrc(index) {
-      return this.bannerPhotosWay + this.bannerPhotosSrc[index];
-    }
-  }
-}
-</script>
+<script setup lang="ts">
 
+const bannerPhotosSrc = [
+  '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
+  '7.jpg', '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg'
+];
+const bannerPhotosWay = '/photos/main-page/banner/';
+
+const getBannerPhotoSrc = (index) => {
+  return bannerPhotosWay + bannerPhotosSrc[index];
+}
+
+</script>
 
 <style scoped lang="scss">
 .banner {

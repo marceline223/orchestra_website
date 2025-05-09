@@ -61,57 +61,50 @@
   </v-row>
 </template>
 
-<script>
+<script setup lang="ts">
 import VideoPreviewComponent from "../../components/VideoPreviewComponent.vue";
 
-export default {
-  name: "InfoConcerts",
-  components: {VideoPreviewComponent},
-  data: () => {
-    return {
-      concerts: [
-        {
-          id: 0,
-          date: "10 января",
-          name: "Концерт1",
-          placeName: "Белый зал",
-        },
-        {
-          id: 1,
-          date: "16 января",
-          name: "Концерт2",
-          placeName: "Белый зал",
-        }
-      ],
-      videoExamples: [
-        {
-          id: 0,
-          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239053&hd=4&autoplay=1",
-          videoTitle: "К.Дженкинс - Palladio",
-          previewSrc: "/photos/main-page/carousel/1.jpg",
-        },
-        {
-          id: 1,
-          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239028&hd=4&autoplay=1",
-          videoTitle: "А.Хачатурян - Танец с саблями",
-          previewSrc: "/photos/main-page/carousel/2.jpg",
-        },
-        {
-          id: 2,
-          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239031&hd=4&autoplay=1",
-          videoTitle: "К.Сен-Санс - Танец вакханок",
-          previewSrc: "/photos/main-page/carousel/3.jpg",
-        },
-        {
-          id: 3,
-          videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239058&hd=4&autoplay=1",
-          videoTitle: "Б.Кондин, О.Кондина - Гимн Политехнического университета",
-          previewSrc: "/photos/main-page/carousel/4.jpg",
-        }
-      ]
-    }
+const concerts = [
+  {
+    id: 0,
+    date: "10 января",
+    name: "Концерт1",
+    placeName: "Белый зал",
   },
-}
+  {
+    id: 1,
+    date: "16 января",
+    name: "Концерт2",
+    placeName: "Белый зал",
+  }
+];
+
+const videoExamples = [
+  {
+    id: 0,
+    videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239053&hd=4&autoplay=1",
+    videoTitle: "К.Дженкинс - Palladio",
+    previewSrc: "/photos/main-page/carousel/1.jpg",
+  },
+  {
+    id: 1,
+    videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239028&hd=4&autoplay=1",
+    videoTitle: "А.Хачатурян - Танец с саблями",
+    previewSrc: "/photos/main-page/carousel/2.jpg",
+  },
+  {
+    id: 2,
+    videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239031&hd=4&autoplay=1",
+    videoTitle: "К.Сен-Санс - Танец вакханок",
+    previewSrc: "/photos/main-page/carousel/3.jpg",
+  },
+  {
+    id: 3,
+    videoSrc: "https://vk.com/video_ext.php?oid=-147503153&id=456239058&hd=4&autoplay=1",
+    videoTitle: "Б.Кондин, О.Кондина - Гимн Политехнического университета",
+    previewSrc: "/photos/main-page/carousel/4.jpg",
+  }
+];
 </script>
 
 <style lang="scss">

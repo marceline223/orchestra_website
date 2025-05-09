@@ -1,68 +1,65 @@
 <template>
-  <div class="preview-container">
+  <div
+    class="preview-container cursor-pointer"
+    @click="isModalShown = true"
+  >
     <div class="preview-image-container">
       <img
         class="preview-image"
-        :src="previewSrc"
-        :width="previewWidth"
+        :src="props.previewSrc"
+        :width="props.previewWidth"
         alt="preview image"
       />
     </div>
     <video-watch-component
-      :video-width="videoWidth"
-      :video-height="videoHeight"
-      :video-src="videoSrc"
+      :video-width="props.videoWidth"
+      :video-height="props.videoHeight"
+      :video-src="props.videoSrc"
+      :is-modal-shown="isModalShown"
+      @open="isModalShown = true"
+      @close="isModalShown = false"
     />
     <h6
       class="video-title green-text text-wrap"
-      :style="'max-width: ' + previewWidth + 'px'"
+      :style="'max-width: ' + props.previewWidth + 'px'"
     >
-      {{ videoTitle }}
+      {{ props.videoTitle }}
     </h6>
   </div>
 </template>
 
-<script>
-
+<script setup lang="ts">
 import VideoWatchComponent from "./VideoWatchComponent.vue";
+import {ref} from "vue";
 
-export default {
-  name: "VideoPreviewComponent",
-  components: {VideoWatchComponent},
-  props: {
-    videoSrc: {
-      type: String,
-      required: true,
-    },
-    previewSrc: {
-      type: String,
-      default: 'video/preview/no-video.png'
-    },
-    previewWidth: {
-      type: Number,
-      default: 250,
-    },
-    videoWidth: {
-      type: String,
-      default: '1080',
-    },
-    videoHeight: {
-      type: String,
-      default: '900',
-    },
-    videoTitle: {
-      type: String,
-      default: null,
-    }
+const props = defineProps({
+  videoSrc: {
+    type: String,
+    required: true,
   },
-  data() {
-    return {
-      isModalShown: false,
-    }
+  previewSrc: {
+    type: String,
+    default: 'video/preview/no-video.png'
   },
-  getters: {}
-}
+  previewWidth: {
+    type: Number,
+    default: 250,
+  },
+  videoWidth: {
+    type: String,
+    default: '1080',
+  },
+  videoHeight: {
+    type: String,
+    default: '900',
+  },
+  videoTitle: {
+    type: String,
+    default: null,
+  }
+})
 
+const isModalShown = ref(false);
 </script>
 
 <style scoped lang="scss">

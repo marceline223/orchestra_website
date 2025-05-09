@@ -83,39 +83,32 @@
   </v-row>
 </template>
 
-<script>
-export default {
-  name: "InfoAbout",
-  data: () => {
-    return {
-      carouselValue: 0,
-      carouselPhotosSrc: [
-        '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'
-      ],
-      carouselPhotosWay: '/photos/main-page/carousel/',
-    }
-  },
-  computed: {
-    carouselPhoto() {
-      return this.carouselPhotosWay + this.carouselPhotosSrc[this.carouselValue];
-    }
-  },
-  methods: {
-    onClickPrev() {
-      if (this.carouselValue > 0) {
-        this.carouselValue--;
-      } else {
-        this.carouselValue = this.carouselPhotosSrc.length - 1;
-      }
-    },
-    onClickNext() {
-      if (this.carouselValue < this.carouselPhotosSrc.length - 1) {
-        this.carouselValue++;
-      } else {
-        this.carouselValue = 0;
-      }
-    },
-  },
+<script setup>
+
+import {computed, ref} from "vue";
+
+const carouselValue = ref(0);
+const carouselPhotosSrc = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+const carouselPhotosWay = '/photos/main-page/carousel/';
+
+const carouselPhoto = computed(() => {
+  return carouselPhotosWay + carouselPhotosSrc[carouselValue.value];
+})
+
+const onClickPrev = () => {
+  if (carouselValue.value > 0) {
+    carouselValue.value--;
+  } else {
+    carouselValue.value = carouselPhotosSrc.length - 1;
+  }
+}
+
+const onClickNext = () => {
+  if (carouselValue.value < carouselPhotosSrc.length - 1) {
+    carouselValue.value++;
+  } else {
+    carouselValue.value = 0;
+  }
 }
 </script>
 

@@ -17,13 +17,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
+
 import BannerGrid from "./BannerGrid.vue";
 import InfoAbout from "./InfoAbout.vue";
 import InfoConcerts from "./InfoConcerts.vue"
 
-export default {
-  name: "MainPage",
-  components: {InfoAbout, BannerGrid, InfoConcerts},
-}
 </script>

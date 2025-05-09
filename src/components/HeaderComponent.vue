@@ -54,12 +54,6 @@
   </v-app-bar>
 </template>
 
-<script>
-export default {
-  name: "HeaderComponent",
-}
-</script>
-
 <style lang="scss" scoped>
 .header-link {
   text-decoration: none;
