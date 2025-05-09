@@ -179,17 +179,17 @@
           </v-form>
         </v-card-text>
         <v-card-actions class="ms-auto fixed-bottom">
-            <v-btn
-              text="Отмена"
-              @click="onClickClose"
-            />
-            <v-btn
-              class="light-green-button"
-              text="Отправить"
-              variant="tonal"
-              :disabled="!isFormValid"
-              @click="onClickSave"
-            />
+          <v-btn
+            text="Отмена"
+            @click="onClickClose"
+          />
+          <v-btn
+            class="light-green-button"
+            text="Отправить"
+            variant="tonal"
+            :disabled="!isFormValid"
+            @click="onClickSave"
+          />
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -213,8 +213,8 @@ const isFormValid = ref(false);
 const form = ref({
   name: {
     lastName: '',
-      firstName: '',
-      surname: '',
+    firstName: '',
+    surname: '',
   },
   birthday: null,
   instrument: '',
@@ -233,9 +233,9 @@ const form = ref({
 });
 const rules = {
   required: value => !!value || 'Поле обязательно',
-    surnameRequired: value => isSurnameNotRequired.value || !!value || 'Поле обязательно',
-    onlyDigits: value => /^[0-9]+$/.test(value) || 'Только цифры',
-    onlyLetters: value => /^[a-zA-Zа-яёА-ЯЁ]+$/.test(value) || 'Только буквы'
+  surnameRequired: value => isSurnameNotRequired.value || !!value || 'Поле обязательно',
+  onlyDigits: value => /^[0-9]+$/.test(value) || 'Только цифры',
+  onlyLetters: value => /^[a-zA-Zа-яёА-ЯЁ]+$/.test(value) || 'Только буквы'
 };
 const isAlertShown = ref(false);
 const degrees = [
@@ -285,6 +285,7 @@ const onClickSurnameCheckbox = () => {
 <style lang="scss" scoped>
 .radio-group {
   margin-left: -10px !important;
+
   :deep(.v-selection-control-group) {
     justify-content: space-between;
   }

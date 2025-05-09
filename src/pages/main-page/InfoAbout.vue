@@ -1,15 +1,13 @@
 <template>
   <v-row>
     <v-col class="d-flex">
-      <div class="carousel-btn">
-        <v-icon
-          icon="mdi-menu-left"
-          color="#6EA06A"
-          size="x-large"
+      <div class="carousel-btn cursor-pointer">
+        <img
+          src="../../assets/icons/arrow-left.svg"
           @click="onClickPrev"
         />
       </div>
-      <div style="width: 100%">
+      <div style="width: 100%" class="mx-2">
         <v-carousel
           v-model="carouselValue"
           cycle
@@ -27,15 +25,13 @@
         </v-carousel>
         <router-link
           class="darker-green-text"
-          to="/gallery"
+          to="gallery"
           text="Смотреть все"
         />
       </div>
-      <div class="carousel-btn">
-        <v-icon
-          icon="mdi-menu-right"
-          color="#6EA06A"
-          size="x-large"
+      <div class="carousel-btn cursor-pointer">
+        <img
+          src="../../assets/icons/arrow-right.svg"
           @click="onClickNext"
         />
       </div>

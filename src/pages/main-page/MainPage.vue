@@ -1,8 +1,8 @@
 <template>
   <div>
-    <banner-grid />
-    <info-about />
-    <info-concerts />
+    <banner-grid/>
+    <info-about/>
+    <info-concerts/>
     <h2 class="text-center">
       Хочешь присоединиться?
     </h2>
@@ -21,6 +21,7 @@
 import BannerGrid from "./BannerGrid.vue";
 import InfoAbout from "./InfoAbout.vue";
 import InfoConcerts from "./InfoConcerts.vue"
+
 export default {
   name: "MainPage",
   components: {InfoAbout, BannerGrid, InfoConcerts},

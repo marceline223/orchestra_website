@@ -5,7 +5,7 @@
   >
     <v-row class="justify-space-between align-center footer-row">
       <v-row>
-        <v-col class="d-flex flex-column justify-space-between">
+        <v-col class="d-flex flex-column gr-3 pt-5">
           <h6>
             <router-link
               class="green-text text-left"
@@ -22,26 +22,35 @@
           </h6>
         </v-col>
         <v-col
-          class="text-left p-0"
+          class="text-left d-flex flex-column justify-space-around gr-2 pt-5"
         >
           <h6 class="green-text">
             Наши соцсети:
           </h6>
-          <a
-            target="_blank"
-            href="https://vk.com/polytech_orchestra"
-          >
-            <icon class="fa-brands fa-vk light-green-text icon-contacts"/>
-          </a>
-          <a
-            target="_blank"
-            href="https://t.me/piorchestra"
-          >
-            <icon class="fa-brands fa-telegram light-green-text icon-contacts"/>
-          </a>
+          <div>
+            <a
+              target="_blank"
+              href="https://vk.com/polytech_orchestra"
+            >
+              <img
+                src="../assets/icons/vk.svg"
+                width="25"
+                class="mr-1"
+              >
+            </a>
+            <a
+              target="_blank"
+              href="https://t.me/piorchestra"
+            >
+              <img
+                src="../assets/icons/tg.svg"
+                width="25"
+              >
+            </a>
+          </div>
         </v-col>
       </v-row>
-      <v-col>
+      <v-col class="d-flex flex-column pt-5">
         <h6 class="green-text">
           Оркестр Политеха
         </h6>
@@ -64,11 +73,13 @@ export default {
 
 <style lang="scss" scoped>
 .footer-component {
-  max-height: 76px;
+  max-height: 105px;
   text-align: left;
   background-color: #D9F3D0 !important;
+  padding-bottom: 7em;
+
   .footer-row {
-    width: 90%;
+    width: 80%;
   }
 }
 

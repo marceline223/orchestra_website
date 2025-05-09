@@ -29,7 +29,7 @@
       </v-row>
       <router-link
         class="darker-green-text my-0"
-        to="/gallery"
+        to="gallery"
         text="Смотреть все"
       />
     </v-col>
@@ -54,7 +54,7 @@
       </v-row>
       <router-link
         class="darker-green-text"
-        to="/gallery"
+        to="gallery"
         text="Смотреть все"
       />
     </v-col>

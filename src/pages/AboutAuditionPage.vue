@@ -58,8 +58,9 @@
         </div>
 
         <img
-          :src="'../../public/icons/triangle-' + (row.isExpanded ? 'up.svg' : 'down.svg')"
-          width="35"
+          class="cursor-pointer"
+          :src="getIconSrc(row.isExpanded)"
+          width="30"
         >
       </div>
       <v-expand-transition>
@@ -79,8 +80,8 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
-import SignUpForAuditionWindow from "../components/SignUpForAuditionWindow.vue";
+import {ref} from 'vue';
+import SignUpForAuditionWindow from '../components/SignUpForAuditionWindow.vue';
 
 const isWindowActive = ref(false)
 
@@ -90,6 +91,10 @@ const onClickShowModal = () => {
 
 const onClickCloseModal = () => {
   isWindowActive.value = false;
+}
+
+const getIconSrc = (isExpanded: boolean) => {
+  return 'src/assets/icons/triangle-' + (isExpanded ? 'down.svg' : 'right.svg');
 }
 
 const faqData = ref([

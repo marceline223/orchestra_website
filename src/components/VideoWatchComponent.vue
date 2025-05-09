@@ -1,10 +1,11 @@
 <template>
   <div class="preview-icon-container">
     <v-dialog
-        v-model="isModalShown"
-        :width="videoWidth"
-        :height="videoHeight"
-        @close="onClickCloseDialog"
+      v-model="isModalShown"
+      :width="videoWidth"
+      :height="videoHeight"
+      @close="onCloseDialog"
+      @keydown.esc="onCloseDialog"
     >
       <v-card>
         <iframe
@@ -16,11 +17,11 @@
         />
       </v-card>
     </v-dialog>
-    <v-btn
-        class="preview-video-button"
-        icon="mdi-menu-right"
-        @click="isModalShown = true"
-    />
+    <img
+      class="cursor-pointer"
+      src="../assets/icons/play.svg"
+      @click="isModalShown = true"
+    >
   </div>
 </template>
 
@@ -48,7 +49,7 @@ export default {
     }
   },
   methods: {
-    onClickCloseDialog() {
+    onCloseDialog() {
       this.isModalShown = false;
     }
   }
@@ -56,13 +57,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-btn--variant-elevated {
-  color: #6EA06A;
-  background-color: white;
-}
 
 .preview-icon-container {
   grid-area: 1 / 1;
   align-self: center;
 }
+
 </style>

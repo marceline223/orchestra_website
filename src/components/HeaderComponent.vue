@@ -7,15 +7,15 @@
       <v-row class="header-icon align-center">
         <div>
           <v-img
-              src="logo-white.svg"
-              width="45px"
+            src="logo-white.svg"
+            width="45px"
           />
         </div>
         <div>
           <router-link
-              to="/"
-              class="header-title-text"
-              text="Оркестр Политеха"
+            to="/"
+            class="header-title-text"
+            text="Оркестр Политеха"
           />
         </div>
       </v-row>
@@ -61,28 +61,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .header-link {
-    text-decoration: none;
-    text-transform: none;
-    font-weight: 300;
-    font-size: 1.1em;
-    color: white;
-    letter-spacing: 1.5px;
-  }
+.header-link {
+  text-decoration: none;
+  text-transform: none;
+  font-weight: 300;
+  font-size: 1.1em;
+  color: white;
+  letter-spacing: 1.5px;
+}
 
-  .header-title-text {
-    text-decoration: none;
-    line-height: 0.9em;
-    color: white;
-    font-size: 1.5em;
-    display: flex;
-    width: 50%;
-    text-align: left;
-    font-weight: 300;
-  }
-  .header-icon {
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-left: 100px;
-  }
+.header-title-text {
+  text-decoration: none;
+  line-height: 0.9em;
+  color: white;
+  font-size: 1.5em;
+  display: flex;
+  width: 50%;
+  text-align: left;
+  font-weight: 300;
+}
+
+.header-icon {
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-left: 100px;
+}
 </style>
