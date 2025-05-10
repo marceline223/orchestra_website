@@ -41,12 +41,15 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+
+import {Member} from "../../data/Member";
+import {Instrument} from "../../data/Instrument";
 
 const photosWay = '/photos/members/'
 
 // TODO: загрузка оркестрантов с сервера
-const members = [
+const members: Member[] = [
   {
     id: 0,
     name: {
@@ -174,13 +177,13 @@ const members = [
 ]
 
 // TODO: загрузка оркестрантов по инструментам с сервера
-const getMembersByInstruments = (instrumentId) => {
+const getMembersByInstruments = (instrumentId: number): void => {
   return members.filter((member) =>
-    member?.instrument?.find(instrument => instrument.id === instrumentId)
+    member.instrument.find(instrument => instrument.id === instrumentId)
   )
 }
 
-const instruments = [
+const instruments: Instrument[] = [
   {
     id: 0,
     name: 'Дирижер',
