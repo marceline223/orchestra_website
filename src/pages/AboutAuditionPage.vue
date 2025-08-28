@@ -80,23 +80,28 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import SignUpForAuditionWindow from '../components/SignUpForAuditionWindow.vue';
 
 const isWindowActive = ref(false)
 
-const onClickShowModal = () => {
+onMounted(() => {
+  window.scrollTo(0, 0);
+})
+
+const onClickShowModal = (): void => {
   isWindowActive.value = true;
 }
 
-const onClickCloseModal = () => {
+const onClickCloseModal = (): void => {
   isWindowActive.value = false;
 }
 
-const getIconSrc = (isExpanded: boolean) => {
+const getIconSrc = (isExpanded: boolean): string => {
   return 'src/assets/icons/triangle-' + (isExpanded ? 'down.svg' : 'right.svg');
 }
 
+// TODO: загрузка FAQ с бд
 const faqData = ref([
   {
     id: 0,
@@ -120,15 +125,16 @@ const faqData = ref([
   },
   {
     id: 2,
-    question: 'Вопрос 3',
-    answer: 'Ответ 3',
+    question: 'Обучаете ли вы игре на музыкальных инструментах?',
+    answer: 'Нет. Предполагается, что вы уже умеете играть и (желательно) знаете нотную грамоту. Это не касается перкуссии, тут всему научим.',
     isHtmlStr: false,
     isExpanded: false,
   },
   {
     id: 3,
-    question: 'Вопрос 4',
-    answer: 'Ответ 4',
+    question: 'Как проходят прослушивания?',
+    answer: 'Прослушивания проходят до (если это официальные даты прослушиваний) репетиции или после (если вы приходите в течение года). Сначала вы рассказываете немного о себе: из какого города, что заканчивали, где обучаетесь. ' +
+      'Затем гаммы и отрывки, играть можно по нотам, если волнуетесь :)',
     isHtmlStr: false,
     isExpanded: false,
   },

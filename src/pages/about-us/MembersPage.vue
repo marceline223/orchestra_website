@@ -2,34 +2,42 @@
   <h1 class="mt-5 mb-15">Состав оркестра</h1>
 
   <div
-    v-for="instrument in instruments"
+    v-for="instrument in sortedInstruments()"
     :key="instrument.id"
   >
     <h2>
-      {{ instrument.title }}
+      {{ instrument.namePlural || instrument.name }}
     </h2>
     <v-row class="my-5 gc-8">
       <div
         v-for="member in getMembersByInstruments(instrument.id)"
         :key="member.id"
-        class="d-flex flex-column align-center justify-start"
+        class="d-flex flex-column align-center justify-start mb-3"
       >
         <v-img
           class="rounded-photo"
           :src="photosWay + member.photoSrc"
-          width="300px"
+          width="240px"
           aspect-ratio="1"
           cover
-        />
+        >
+          <template #error>
+            <v-img
+              width="300px"
+              src="not_found.jpg"
+              cover
+            ></v-img>
+          </template>
+        </v-img>
         <div class="mt-1 h-100">
           <h3 class="darker-green-text text-center photo-label lh-small">
-            {{ member.name.firstName }}
+            {{ member.firstName }}
           </h3>
           <h3 class="darker-green-text text-center photo-label lh-small mb-1">
-            {{ member.name.lastName }}
+            {{ member.lastName }}
           </h3>
           <div
-            v-for="(position, index) in member.position"
+            v-for="(position, index) in getPositionByInstrument(instrument.id, member.id)"
             :key="index"
             class="darker-green-text text-center photo-label lh-small"
           >
@@ -43,184 +51,56 @@
 
 <script setup lang="ts">
 
-import {Member} from "../../data/Member";
-import {Instrument} from "../../data/Instrument";
+import {Member} from "@models/Member";
+import {Instrument} from "@models/Instrument";
+import {MemberInstrument} from "@models/MemberInstrument";
+import { instrumentService } from "@api/service/InstrumentService";
+import { memberService } from "@api/service/MemberService";
+import {ref, onMounted} from "vue";
 
 const photosWay = '/photos/members/'
 
-// TODO: загрузка оркестрантов с сервера
-const members: Member[] = [
-  {
-    id: 0,
-    name: {
-      lastName: 'Мисюра',
-      firstName: 'Дмитрий',
-      surName: 'Владимирович',
-    },
-    instrument: [{
-      id: 0,
-      name: 'Дирижер',
-      key: 'CONDUCTOR',
-    }],
-    photoSrc: '2.jpg',
-    position: ['Художественный руководитель', 'Главный дирижер'],
-  },
-  {
-    id: 1,
-    name: {
-      lastName: 'Жуков',
-      firstName: 'Павел',
-      surName: 'Юрьевич',
-    },
-    instrument: [{
-      id: 0,
-      name: 'Дирижер',
-      key: 'CONDUCTOR',
-    }],
-    photoSrc: '1.jpg',
-    position: ['Второй дирижер', 'Администратор'],
-  },
-  {
-    id: 2,
-    name: {
-      lastName: 'Филимонова',
-      firstName: 'Дарья',
-      surName: 'Александровна',
-    },
-    instrument: [{
-      id: 2,
-      name: 'Флейта',
-      key: 'FLUTE',
-    }],
-    photoSrc: '3.jpg',
-    position: ['Вторая флейта', 'Администратор'],
-  },
-  {
-    id: 3,
-    name: {
-      lastName: 'Гузуева',
-      firstName: 'Диана',
-      surName: 'Алексеевна',
-    },
-    instrument: [{
-      id: 3,
-      name: 'Скрипка',
-      key: 'STRING',
-    }],
-    photoSrc: '4.jpg',
-    position: ['Концертмейстер', 'Первая скрипка'],
-  },
-  {
-    id: 4,
-    name: {
-      lastName: 'Максимова',
-      firstName: 'Ева',
-      surName: 'Александровна',
-    },
-    instrument: [{
-      id: 3,
-      name: 'Скрипка',
-      key: 'STRING',
-    }],
-    photoSrc: '5.jpg',
-    position: ['Вторая скрипка'],
-  },
-  {
-    id: 5,
-    name: {
-      lastName: 'Иванов',
-      firstName: 'Игорь',
-      surName: 'Олегович',
-    },
-    instrument: [{
-      id: 4,
-      name: 'Виолончель',
-      key: 'CELLO',
-    }],
-    photoSrc: '1.jpg'
-  },
-  {
-    id: 6,
-    name: {
-      lastName: 'Осипов',
-      firstName: 'Алексей',
-      surName: 'Сергеевич',
-    },
-    instrument: [
-      {
-        id: 5,
-        name: 'Ударные',
-        key: 'DRUM',
-      },
-      {
-        id: 1,
-        name: 'Солист',
-        key: 'VOICE',
-      },
-    ],
-    photoSrc: '1.jpg',
-  },
-  {
-    id: 7,
-    name: {
-      lastName: 'Виноградов',
-      firstName: 'Иван',
-      surName: 'Андреевич',
-    },
-    instrument: [{
-      id: 5,
-      name: 'Ударные',
-      key: 'DRUM',
-    }],
-    photoSrc: '2.jpg'
-  },
-]
+const instruments: Instrument[] = ref<Instrument[]>([]);
+const members: Member[] = ref<Member[]>([]);
 
-// TODO: загрузка оркестрантов по инструментам с сервера
-const getMembersByInstruments = (instrumentId: number): void => {
-  return members.filter((member) =>
-    member.instrument.find(instrument => instrument.id === instrumentId)
-  )
+onMounted(async () => {
+  window.scrollTo(0, 0);
+  instruments.value = await instrumentService.getInstruments();
+  members.value = await memberService.getMembers();
+});
+
+const sortByOrder = (orderA: number, orderB: number, nameA: string, nameB: string): number => {
+  // Сначала сортируем по order
+  if (orderA == null && orderB != null) return 1;
+  if (orderB == null && orderA != null) return -1;
+  if (orderA != null && orderB != null && orderA !== orderB) return orderA - orderB;
+  // Затем по имени
+  return nameA.localeCompare(nameB);
 }
 
-const instruments: Instrument[] = [
-  {
-    id: 0,
-    name: 'Дирижер',
-    key: 'CONDUCTOR',
-    title: 'Дирижеры',
-  },
-  {
-    id: 1,
-    name: 'Солист',
-    key: 'VOICE',
-    title: 'Солисты',
-  },
-  {
-    id: 2,
-    name: 'Флейта',
-    key: 'FLUTE',
-    title: 'Флейты',
-  },
-  {
-    id: 3,
-    name: 'Скрипка',
-    key: 'STRING',
-    title: 'Скрипки',
-  },
-  {
-    id: 4,
-    name: 'Виолончель',
-    key: 'CELLO',
-    title: 'Виолончель',
-  },
-  {
-    id: 5,
-    name: 'Ударные',
-    key: 'DRUM',
-    title: 'Ударные',
-  },
-]
+const sortedInstruments = (): Instrument[] => {
+  const allInstruments = instruments.value as Instrument[] | undefined;
+  return allInstruments.sort((a: Instrument, b: Instrument) => sortByOrder(a.order, b.order, a.name, b.name));
+}
+
+const getMembersByInstruments = (instrumentId: number): Member[] => {
+  const allMembers = members.value as Member[] | undefined;
+  return allMembers
+    .filter((member: Member) => member.instruments?.find((i: MemberInstrument) => i.instrument.id === instrumentId))
+    .sort((a, b) => {
+      const orderA = a.instruments?.find(i => i.instrument.id === instrumentId)?.order;
+      const orderB = b.instruments?.find(i => i.instrument.id === instrumentId)?.order;
+
+      return sortByOrder(orderA, orderB, a.lastName + a.firstName, b.lastName + b.firstName);
+    });
+}
+
+const getPositionByInstrument = (instrumentId: number, memberId: number): string => {
+  const allMembers = members.value as Member[] | undefined;
+  const instruments = allMembers?.find((member: Member) => member.id === memberId)?.instruments;
+  return instruments?.find((i: MemberInstrument) => i.instrument.id === instrumentId).position?.split(',');
+}
+
 </script>
 
 <style lang="scss" scoped>

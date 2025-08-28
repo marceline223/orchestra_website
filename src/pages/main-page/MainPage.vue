@@ -22,5 +22,10 @@
 import BannerGrid from "./BannerGrid.vue";
 import InfoAbout from "./InfoAbout.vue";
 import InfoConcerts from "./InfoConcerts.vue"
+import {onMounted} from "vue";
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+})
 
 </script>

@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h1>История Оркестра Политеха "INGENIUM"</h1>
-        <p class="text-left darker-green-text mb-3">
+        <p class="text-left darker-green-text my-3">
           Первый студенческий оркестр из числа будущей инженерной элиты страны был создан в университете в начале XX века,
           однако, к сожалению, его летопись была краткой.
         </p>
@@ -74,8 +74,14 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import {onMounted} from "vue";
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
+</script>
+
 <style scoped lang="scss">
 
 </style>
-<script setup lang="ts">
-</script>
