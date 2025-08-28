@@ -70,7 +70,7 @@
   max-height: 105px;
   text-align: left;
   background-color: #D9F3D0 !important;
-  padding-bottom: 7em;
+  padding-bottom: 2em;
 
   .footer-row {
     width: 80%;
