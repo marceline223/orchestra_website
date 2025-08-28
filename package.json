@@ -4,13 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint --ext .js,.vue src",
-    "format": "prettier .  --write"
+    "client-dev": "vite",
+    "client-build": "vite build",
+    "client-preview": "vite preview",
+    "client-lint": "eslint --ext .js,.vue src",
+    "client-format": "prettier .  --write"
   },
   "dependencies": {
+    "axios": "^1.9.0",
     "babel-eslint": "^10.1.0",
     "eslint-plugin-html": "^8.0.0",
     "eslint-plugin-prettier": "^5.1.3",
