@@ -198,6 +198,9 @@
 
 <script setup lang="ts">
 import {ref} from "vue";
+import {Validator} from "@models/Validator";
+import type {VTextField} from "vuetify/components";
+import {Degree} from "@models/Degree";
 
 const props = defineProps({
   isWindowActive: {
@@ -207,9 +210,9 @@ const props = defineProps({
 });
 const emit = defineEmits(['close']);
 
-const surnameTextField = ref(null);
-const isSurnameNotRequired = ref(false);
-const isFormValid = ref(false);
+const surnameTextField = ref<VTextField | null>(null);
+const isSurnameNotRequired = ref<boolean>(false);
+const isFormValid = ref<boolean>(false);
 const form = ref({
   name: {
     lastName: '',
@@ -231,14 +234,14 @@ const form = ref({
   email: '',
   link: '',
 });
-const rules = {
+const rules: Record<string, Validator> = {
   required: value => !!value || 'Поле обязательно',
   surnameRequired: value => isSurnameNotRequired.value || !!value || 'Поле обязательно',
   onlyDigits: value => /^[0-9]+$/.test(value) || 'Только цифры',
   onlyLetters: value => /^[a-zA-Zа-яёА-ЯЁ]+$/.test(value) || 'Только буквы'
 };
 const isAlertShown = ref(false);
-const degrees = [
+const degrees: Degree[] = [
   {
     id: 0,
     key: 'BACHELOR',
@@ -261,13 +264,11 @@ const degrees = [
   },
 ]
 
-const onClickClose = () => {
-  console.log('close 1');
+const onClickClose: void = () => {
   emit('close');
 }
 
-const onClickSave = () => {
-  console.log('save');
+const onClickSave: void = () => {
   isAlertShown.value = true;
   setTimeout(() => {
     isAlertShown.value = false;
@@ -275,9 +276,9 @@ const onClickSave = () => {
   }, 1000);
 }
 
-const onClickSurnameCheckbox = () => {
+const onClickSurnameCheckbox = async (): Promise<void> => {
   form.value.name.surname = '';
-  surnameTextField.value.validate();
+  await surnameTextField.value?.validate();
 }
 
 </script>
