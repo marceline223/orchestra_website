@@ -6,7 +6,7 @@
   >
     <v-img
       class="news-image"
-      :src="props.newsObject.photoSrc || 'default_img.jpg'"
+      :src="imageSrc"
       cover
       :height="large ? 400 : 150"
     />
@@ -14,7 +14,7 @@
       {{ title }}
     </v-card-text>
     <div class="date-container ml-4">
-      {{ props.newsObject.date.toLocaleDateString('default', {day: 'numeric', month: 'long', year: "numeric"}) }}
+      {{ dateStr }}
     </div>
     <v-card-text class="card-text text-left green-text font-weight-light pb-0">
       {{ description }}
@@ -63,13 +63,21 @@ const maxTitleLengthLargeCard: number = 100;
 
 const isNewsWindowShown = ref(false);
 
+const imageSrc = computed(() => {
+  return props.newsObject?.photoSrc? 'photos/news/' + props.newsObject.photoSrc : 'default_img.jpg';
+});
+
 const description: string = computed(() => {
-  return trimStr(props.newsObject.description, props.large ? maxDescriptionLengthLargeCard : maxDescriptionLengthSmallCard);
+  return trimStr(props.newsObject?.description, props.large ? maxDescriptionLengthLargeCard : maxDescriptionLengthSmallCard);
 });
 
 const title: string = computed(() => {
-  return trimStr(props.newsObject.title, props.large ? maxTitleLengthLargeCard : maxTitleLengthSmallCard);
+  return trimStr(props.newsObject?.title, props.large ? maxTitleLengthLargeCard : maxTitleLengthSmallCard);
 });
+
+const dateStr: string = computed(() => {
+  return new Date(props.newsObject?.date).toLocaleDateString('default', {day: 'numeric', month: 'long', year: "numeric"});
+})
 
 const trimStr = (str: string, length: number): string => {
   return str.length > length ? str.substring(0, length - 3) + '...' : str;
