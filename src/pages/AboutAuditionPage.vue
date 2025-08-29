@@ -61,6 +61,7 @@
           class="cursor-pointer"
           :src="getIconSrc(row.isExpanded)"
           width="30"
+          :alt="row.isExpanded ? 'Свернуть' : 'Развернуть'"
         >
       </div>
       <v-expand-transition>

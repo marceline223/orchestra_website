@@ -4,6 +4,7 @@
       <div class="carousel-btn cursor-pointer">
         <img
           src="../../assets/icons/arrow-left.svg"
+          alt="<"
           @click="onClickPrev"
         />
       </div>
@@ -32,6 +33,7 @@
       <div class="carousel-btn cursor-pointer">
         <img
           src="../../assets/icons/arrow-right.svg"
+          alt=">"
           @click="onClickNext"
         />
       </div>
