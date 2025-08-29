@@ -20,11 +20,11 @@
           alt="news photo"
           align="left"
         />
-        {{newsObject.description}}
+        {{ newsObject.description }}
       </p>
 
       <p v-else>
-        {{newsObject.description}}
+        {{ newsObject.description }}
       </p>
     </v-card>
   </v-dialog>

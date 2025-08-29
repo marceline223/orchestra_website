@@ -57,8 +57,8 @@
 import {Member} from "@models/Member";
 import {Instrument} from "@models/Instrument";
 import {MemberInstrument} from "@models/MemberInstrument";
-import { instrumentService } from "@api/service/InstrumentService";
-import { memberService } from "@api/service/MemberService";
+import {instrumentService} from "@api/service/InstrumentService";
+import {memberService} from "@api/service/MemberService";
 import {ref, onMounted} from "vue";
 
 const photosWay = '/photos/members/'

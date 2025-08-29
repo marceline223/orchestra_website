@@ -1,4 +1,3 @@
-import {Member} from "@models/Member";
 import {MemberInstrument} from "@models/MemberInstrument";
 
 export type Instrument = {

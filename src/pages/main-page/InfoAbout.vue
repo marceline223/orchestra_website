@@ -105,7 +105,7 @@ const onClickPrev = (): void => {
   }
 }
 
-const onClickNext= (): void => {
+const onClickNext = (): void => {
   if (carouselValue.value < carouselPhotosSrc.length - 1) {
     carouselValue.value++;
   } else {

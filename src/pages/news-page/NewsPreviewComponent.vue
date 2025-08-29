@@ -64,7 +64,7 @@ const maxTitleLengthLargeCard: number = 100;
 const isNewsWindowShown = ref(false);
 
 const imageSrc = computed(() => {
-  return props.newsObject?.photoSrc? 'photos/news/' + props.newsObject.photoSrc : 'default_img.jpg';
+  return props.newsObject?.photoSrc ? 'photos/news/' + props.newsObject.photoSrc : 'default_img.jpg';
 });
 
 const description: string = computed(() => {
@@ -76,7 +76,11 @@ const title: string = computed(() => {
 });
 
 const dateStr: string = computed(() => {
-  return new Date(props.newsObject?.date).toLocaleDateString('default', {day: 'numeric', month: 'long', year: "numeric"});
+  return new Date(props.newsObject?.date).toLocaleDateString('default', {
+    day: 'numeric',
+    month: 'long',
+    year: "numeric"
+  });
 })
 
 const trimStr = (str: string, length: number): string => {
