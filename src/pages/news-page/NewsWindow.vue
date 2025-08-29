@@ -4,9 +4,10 @@
     width="800px"
     @update:model-value="onClickClose"
   >
-    <v-card
-      :title="props.newsObject.title"
-    >
+    <v-card>
+      <v-card-text class="h2">
+        {{ props.newsObject.title }}
+      </v-card-text>
       <v-card-text>
         {{props.newsObject.description}}
       </v-card-text>
@@ -39,4 +40,7 @@ const onClickClose = (): void => {
 </script>
 
 <style scoped lang="scss">
+.card-title {
+  font-size: 36pt !important;
+}
 </style>

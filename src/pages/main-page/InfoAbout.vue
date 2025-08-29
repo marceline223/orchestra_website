@@ -83,7 +83,7 @@
   </v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import {computed, ref} from "vue";
 
@@ -95,7 +95,7 @@ const carouselPhoto = computed(() => {
   return carouselPhotosWay + carouselPhotosSrc[carouselValue.value];
 })
 
-const onClickPrev = () => {
+const onClickPrev = (): void => {
   if (carouselValue.value > 0) {
     carouselValue.value--;
   } else {
@@ -103,7 +103,7 @@ const onClickPrev = () => {
   }
 }
 
-const onClickNext = () => {
+const onClickNext= (): void => {
   if (carouselValue.value < carouselPhotosSrc.length - 1) {
     carouselValue.value++;
   } else {

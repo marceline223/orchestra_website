@@ -2,10 +2,7 @@
   <div class="page-title">Галерея</div>
 </template>
 
-<script>
-export default {
-  name: "GalleryPage"
-}
+<script setup lang="ts">
 </script>
 
 <style scoped>
