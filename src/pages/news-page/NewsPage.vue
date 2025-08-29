@@ -2,11 +2,7 @@
   <div class="page-title">Новости оркестра</div>
   <div class="news-grid mt-10" v-if="news.length">
     <!-- большая карточка -->
-    <news-preview-component
-      :news-object="news[0]"
-      class="news-item large"
-      large
-    />
+    <news-preview-component :news-object="news[0]" class="news-item large" large />
 
     <!-- маленькие -->
     <news-preview-component
@@ -16,20 +12,19 @@
       class="news-item small"
     />
   </div>
-
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
-import NewsPreviewComponent from "./NewsPreviewComponent.vue";
-import {News} from "@models/News";
-import {newsService} from "@api/service/NewsService";
+import { onMounted, ref } from 'vue';
+import NewsPreviewComponent from './NewsPreviewComponent.vue';
+import { News } from '@models/News';
+import { newsService } from '@api/service/NewsService';
 
 const news: News[] = ref<News[]>([]);
 
 onMounted(async () => {
   window.scrollTo(0, 0);
-  news.value = await newsService.getAllNews()
+  news.value = await newsService.getAllNews();
 });
 </script>
 
@@ -38,7 +33,7 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-columns: 50px;
-  grid-auto-rows: 350px;
+  grid-auto-rows: 400px;
   gap: 50px;
 }
 

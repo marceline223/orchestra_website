@@ -1,29 +1,21 @@
 <template>
-  <v-dialog
-    :model-value="show"
-    width="1000px"
-    @update:model-value="onClickClose"
-  >
+  <v-dialog :model-value="show" width="1000px" @update:model-value="onClickClose">
     <v-card class="pa-5">
       <div class="h2">
         {{ newsObject.title }}
       </div>
       <div class="date-container text-center my-3 mb-5">
-        {{ props.newsObject.date.toLocaleDateString('default', {day: 'numeric', month: 'long', year: "numeric"}) }}
+        {{ dateStr }}
       </div>
-      <!-- Если есть картинка, текст её обтекает -->
-      <p v-if="newsObject?.photoSrc">
+      <p>
         <img
+          v-if="newsObject?.photoSrc"
           class="mb-7 mr-5"
-          :src="newsObject.photoSrc"
+          :src="imageSrc"
           height="400px"
           alt="news photo"
           align="left"
         />
-        {{ newsObject.description }}
-      </p>
-
-      <p v-else>
         {{ newsObject.description }}
       </p>
     </v-card>
@@ -31,9 +23,9 @@
 </template>
 
 <script setup lang="ts">
-
-import {PropType} from "vue";
-import {News} from "@models/News";
+import { computed, PropType } from 'vue';
+import { News } from '@models/News';
+import { getDateStr } from '@/util/util';
 
 const props = defineProps({
   newsObject: {
@@ -43,15 +35,24 @@ const props = defineProps({
   show: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 
 const emit = defineEmits(['close']);
 
+const dateStr: string = computed(() => {
+  return getDateStr(props.newsObject?.date);
+});
+
+const imageSrc = computed(() => {
+  return props.newsObject?.photoSrc
+    ? 'photos/news/' + props.newsObject.photoSrc
+    : 'default_img.jpg';
+});
+
 const onClickClose = (): void => {
   emit('close');
-}
-
+};
 </script>
 
 <style scoped lang="scss">

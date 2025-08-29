@@ -4,29 +4,20 @@
     flat
     @click="onShowNewsWindow"
   >
-    <v-img
-      class="news-image"
-      :src="imageSrc"
-      cover
-      :height="large ? 400 : 150"
-    />
-    <v-card-text class="card-title">
-      {{ title }}
-    </v-card-text>
-    <div class="date-container ml-4">
-      {{ dateStr }}
+    <div class="card-content">
+      <v-img class="news-image" :src="imageSrc" cover :height="large ? 400 : 150" />
+      <v-card-text class="card-title">
+        {{ title }}
+      </v-card-text>
+      <div class="date-container ml-4">
+        {{ dateStr }}
+      </div>
+      <v-card-text class="card-text text-left green-text font-weight-light pb-0">
+        {{ description }}
+      </v-card-text>
     </div>
-    <v-card-text class="card-text text-left green-text font-weight-light pb-0">
-      {{ description }}
-    </v-card-text>
-    <a @click="onShowNewsWindow">
-      Смотреть подробнее
-    </a>
-    <news-window
-      :news-object="newsObject"
-      :show="isNewsWindowShown"
-      @close="onCloseNewsWindow"
-    />
+    <a class="mb-3"> Смотреть подробнее </a>
+    <news-window :news-object="newsObject" :show="isNewsWindowShown" @close="onCloseNewsWindow" />
   </v-card>
 </template>
 
@@ -35,9 +26,10 @@
  * Компонент сжатой информации о событии, по клику открывает окно просмотра полной информации {@link NewsWindow}
  */
 
-import NewsWindow from "./NewsWindow.vue";
-import {News} from "@models/News";
-import {computed, PropType, ref} from "vue";
+import NewsWindow from './NewsWindow.vue';
+import { News } from '@models/News';
+import { computed, PropType, ref } from 'vue';
+import { getDateStr } from '@/util/util';
 
 const props = defineProps({
   newsObject: {
@@ -50,56 +42,66 @@ const props = defineProps({
   large: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 
 /*
   Сколько символов будет вмещать описание и заголовок на маленьких и большой карточках
  */
-const maxDescriptionLengthSmallCard: number = 120;
-const maxDescriptionLengthLargeCard: number = 500;
+const maxDescriptionLengthSmallCard: number = 200;
+const maxDescriptionLengthLargeCard: number = 1000;
 const maxTitleLengthSmallCard: number = 60;
-const maxTitleLengthLargeCard: number = 100;
+const maxTitleLengthLargeCard: number = 200;
 
 const isNewsWindowShown = ref(false);
 
 const imageSrc = computed(() => {
-  return props.newsObject?.photoSrc ? 'photos/news/' + props.newsObject.photoSrc : 'default_img.jpg';
+  return props.newsObject?.photoSrc
+    ? 'photos/news/' + props.newsObject.photoSrc
+    : 'default_img.jpg';
 });
 
 const description: string = computed(() => {
-  return trimStr(props.newsObject?.description, props.large ? maxDescriptionLengthLargeCard : maxDescriptionLengthSmallCard);
+  return trimStr(
+    props.newsObject?.description,
+    props.large ? maxDescriptionLengthLargeCard : maxDescriptionLengthSmallCard,
+  );
 });
 
 const title: string = computed(() => {
-  return trimStr(props.newsObject?.title, props.large ? maxTitleLengthLargeCard : maxTitleLengthSmallCard);
+  return trimStr(
+    props.newsObject?.title,
+    props.large ? maxTitleLengthLargeCard : maxTitleLengthSmallCard,
+  );
 });
 
 const dateStr: string = computed(() => {
-  return new Date(props.newsObject?.date).toLocaleDateString('default', {
-    day: 'numeric',
-    month: 'long',
-    year: "numeric"
-  });
-})
+  return getDateStr(props.newsObject?.date);
+});
 
 const trimStr = (str: string, length: number): string => {
   return str.length > length ? str.substring(0, length - 3) + '...' : str;
-}
+};
 
 const onShowNewsWindow = (): void => {
   isNewsWindowShown.value = true;
-}
+};
 
 const onCloseNewsWindow = (): void => {
   isNewsWindowShown.value = false;
-}
+};
 </script>
 
 <style scoped lang="scss">
 .news-card {
   border: 1px solid var(--light-green-color);
   border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  flex: 1;
 }
 
 .large-card {
@@ -117,6 +119,10 @@ const onCloseNewsWindow = (): void => {
     max-width: 200px;
     border-radius: 8px;
   }
+
+  .card-text {
+    height: 25%;
+  }
 }
 
 .small-card {
@@ -129,7 +135,7 @@ const onCloseNewsWindow = (): void => {
   }
 
   .date-container {
-    height: 17px;
+    height: 25px;
     font-size: 8pt;
     max-width: 120px;
     border-radius: 4px;
