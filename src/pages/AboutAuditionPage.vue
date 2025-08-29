@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row class="mt-15 gc-5">
+    <v-row class="mt-5 gc-5">
       <v-col>
         <v-img
           class="rounded-photo"
