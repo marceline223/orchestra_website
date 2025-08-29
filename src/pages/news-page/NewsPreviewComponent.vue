@@ -85,13 +85,6 @@ const onCloseNewsWindow = (): void => {
 </script>
 
 <style scoped lang="scss">
-.date-container {
-  background-color: var(--light-green-color);
-  align-content: center;
-  color: white;
-  font-weight: lighter;
-}
-
 .news-card {
   border: 1px solid var(--light-green-color);
   border-radius: 35px;
@@ -124,9 +117,9 @@ const onCloseNewsWindow = (): void => {
   }
 
   .date-container {
-    height: 15px;
+    height: 17px;
     font-size: 8pt;
-    max-width: 100px;
+    max-width: 120px;
     border-radius: 4px;
   }
 

@@ -1,17 +1,20 @@
 <template>
   <v-dialog
     :model-value="show"
-    width="1200px"
+    width="1000px"
     @update:model-value="onClickClose"
   >
-    <v-card>
-      <v-card-text class="h2 text-center">
+    <v-card class="pa-5">
+      <div class="h2">
         {{ newsObject.title }}
-      </v-card-text>
+      </div>
+      <div class="date-container text-center my-3 mb-5">
+        {{ props.newsObject.date.toLocaleDateString('default', {day: 'numeric', month: 'long', year: "numeric"}) }}
+      </div>
       <!-- Если есть картинка, текст её обтекает -->
       <p v-if="newsObject?.photoSrc">
         <img
-          class="mx-7 mb-7"
+          class="mb-7 mr-5"
           :src="newsObject.photoSrc"
           height="400px"
           alt="news photo"
@@ -20,9 +23,9 @@
         {{newsObject.description}}
       </p>
 
-      <v-card-text v-else>
+      <p v-else>
         {{newsObject.description}}
-      </v-card-text>
+      </p>
     </v-card>
   </v-dialog>
 </template>
@@ -54,5 +57,11 @@ const onClickClose = (): void => {
 <style scoped lang="scss">
 .card-title {
   font-size: 36pt !important;
+}
+
+.date-container {
+  max-width: 200px;
+  border-radius: 8px;
+  text-align: center;
 }
 </style>
