@@ -1,7 +1,7 @@
 <template>
   <v-footer
     class="footer-component"
-    color="#D9F3D0"
+    color="footer-color"
   >
     <v-row class="justify-space-between align-center footer-row">
       <v-row>
@@ -69,7 +69,7 @@
 .footer-component {
   max-height: 105px;
   text-align: left;
-  background-color: #D9F3D0 !important;
+  background-color: var(--footer-color);
   padding-bottom: 2em;
 
   .footer-row {

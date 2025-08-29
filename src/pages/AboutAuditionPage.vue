@@ -148,9 +148,9 @@ const faqData = ref([
 }
 
 .faq-question {
-  background-color: #D9F3D0;
+  background-color: var(--footer-color);
   min-height: 3em;
-  border: 1px solid #6EA06A;
+  border: 1px solid var(--light-green-color);
   border-radius: 1em;
   font-weight: lighter;
   font-size: 16pt;
@@ -158,7 +158,7 @@ const faqData = ref([
 
 .faq-answer {
   width: 95%;
-  border: 1px solid #6EA06A;
+  border: 1px solid var(--light-green-color);
   border-top: 0;
   border-radius: 0 0 1em 1em;
   margin: 0 auto;

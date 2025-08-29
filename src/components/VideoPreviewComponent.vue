@@ -70,7 +70,7 @@ const isModalShown = ref(false);
 
 .preview-image {
   border-radius: 2em;
-  border: 3px solid #6EA06A;
+  border: 3px solid var(--light-green-color);
 }
 
 .preview-image-container {

@@ -5,7 +5,7 @@
         :model-value="isAlertShown"
         class="alert-right-corner"
         title="Данные отправлены"
-        color="light-green"
+        color="light-green-color"
         type="success"
       />
     </v-scroll-x-transition>

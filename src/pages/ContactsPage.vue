@@ -1,5 +1,5 @@
 <template>
-  <h2>Контакты</h2>
+  <div class="page-title">Контакты</div>
 </template>
 
 <script>

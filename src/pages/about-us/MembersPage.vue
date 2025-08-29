@@ -1,6 +1,9 @@
 <template>
-  <h1 class="mt-5 mb-15">Состав оркестра</h1>
+  <div class="page-title">
+    Состав оркестра
+  </div>
 
+  <!-- TODO: не показывать инструменты без музыкантов-->
   <div
     v-for="instrument in sortedInstruments()"
     :key="instrument.id"

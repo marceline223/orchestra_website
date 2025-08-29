@@ -1,30 +1,16 @@
 @import url("/fonts/CorsaGrotesk/stylesheet.css");
 
-$light-green: #6EA06A;
-$green-text-color: #064B00;
-$footer-color: #D9F3D0;
-$darker-green-text-color: #144311;
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  /*a:hover {*/
-  /*  color: #747bff;*/
-  /*}*/
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 :root {
   font-family: 'Corsa Grotesk', serif;
   line-height: 1.5;
   font-weight: 400;
 
+  --light-green-color: #6EA06A;
+  --green-text-color: #064B00;
+  --footer-color: #D9F3D0;
+  --darker-green-text-color: #144311;
+
   color: rgba(255, 255, 255, 0.87);
-  background-color: $footer-color;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -71,34 +57,34 @@ a {
 }
 
 .photo-cube {
-  border: 3px solid $light-green;
+  border: 3px solid var(--light-green-color);
   border-radius: 1.5em;
 }
 
 .carousel-photo {
   border-radius: 5em;
-  border: 3px solid $light-green;
+  border: 3px solid var(--light-green-color);
 }
 
 .rounded-photo {
   border-radius: 30%;
-  border: 5px solid $light-green;
+  border: 5px solid var(--light-green-color);
 }
 
 .darker-green-text {
-  color: $darker-green-text-color !important;
+  color: var(--darker-green-text-color) !important;
 }
 
 .green-text {
-  color: $green-text-color;
+  color: var(--green-text-color);
 }
 
 .light-green-text {
-  color: $light-green;
+  color: var(--light-green-color);
 }
 
 h1 {
-  color: $green-text-color;
+  color: var(--green-text-color);
   text-align: left;
   font-weight: 100;
   font-size: 32pt;
@@ -107,17 +93,25 @@ h1 {
 }
 
 h2 {
-  color: $green-text-color;
+  color: var(--green-text-color);
   text-align: left;
   font-weight: lighter;
   font-size: 24pt;
 }
 
 h3 {
-  color: $darker-green-text-color;
+  color: var(--darker-green-text-color);
   text-align: left;
   font-weight: lighter;
   font-size: 16pt;
+}
+
+.page-title {
+  color: var(--green-text-color);
+  font-size: 24pt;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 16px;
 }
 
 .lh-small {
@@ -125,7 +119,7 @@ h3 {
 }
 
 .main-page-text {
-  color: $green-text-color;
+  color: var(--green-text-color);
   letter-spacing: 1.5pt;
   text-align: left;
   font-weight: 100;
@@ -140,7 +134,7 @@ h3 {
 }
 
 .light-green-button {
-  background-color: $light-green !important;
+  background-color: var(--light-green-color) !important;
   color: white !important;
 }
 
@@ -148,16 +142,16 @@ h3 {
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
-  border-top: 4px solid $light-green !important;
+  border-top: 4px solid var(--light-green-color) !important;
   padding-top: 1em !important;
 
   p {
-    color: $darker-green-text-color;
+    color: var(--darker-green-text-color);
   }
 }
 
 .header-app-bar {
-  border-bottom: 2px solid $green-text-color !important;
+  border-bottom: 2px solid var(--green-text-color) !important;
 }
 
 v-container, .v-container {
