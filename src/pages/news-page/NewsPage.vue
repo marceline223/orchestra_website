@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import {onMounted} from "vue";
-import NewsPreviewComponent from "@/components/NewsPreviewComponent.vue";
+import NewsPreviewComponent from "./NewsPreviewComponent.vue";
 import {News} from "@models/News";
 
 onMounted(() => {

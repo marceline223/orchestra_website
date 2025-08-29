@@ -1,11 +1,16 @@
 <template>
   <v-dialog
     :model-value="show"
+    width="800px"
     @update:model-value="onClickClose"
   >
-    <h1>
-      {{props.newsObject.title}}
-    </h1>
+    <v-card
+      :title="props.newsObject.title"
+    >
+      <v-card-text>
+        {{props.newsObject.description}}
+      </v-card-text>
+    </v-card>
   </v-dialog>
 </template>
 
