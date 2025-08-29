@@ -1,15 +1,27 @@
 <template>
   <v-dialog
     :model-value="show"
-    width="800px"
+    width="1200px"
     @update:model-value="onClickClose"
   >
     <v-card>
-      <v-card-text class="h2">
-        {{ props.newsObject.title }}
+      <v-card-text class="h2 text-center">
+        {{ newsObject.title }}
       </v-card-text>
-      <v-card-text>
-        {{props.newsObject.description}}
+      <!-- Если есть картинка, текст её обтекает -->
+      <p v-if="newsObject?.photoSrc">
+        <img
+          class="mx-7 mb-7"
+          :src="newsObject.photoSrc"
+          height="400px"
+          alt="news photo"
+          align="left"
+        />
+        {{newsObject.description}}
+      </p>
+
+      <v-card-text v-else>
+        {{newsObject.description}}
       </v-card-text>
     </v-card>
   </v-dialog>

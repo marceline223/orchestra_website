@@ -2,10 +2,11 @@
   <v-card
     :class="props.large ? 'news-card large-card' : 'news-card small-card'"
     flat
+    @click="onShowNewsWindow"
   >
     <v-img
       class="news-image"
-      :src="props.newsObject.photoSrc"
+      :src="props.newsObject.photoSrc || 'default_img.jpg'"
       cover
       :height="large ? 400 : 150"
     />
@@ -18,7 +19,9 @@
     <v-card-text class="card-text text-left green-text font-weight-light pb-0">
       {{ description }}
     </v-card-text>
-    <a @click="onShowNewsWindow">Смотреть подробнее</a>
+    <a @click="onShowNewsWindow">
+      Смотреть подробнее
+    </a>
     <news-window
       :news-object="newsObject"
       :show="isNewsWindowShown"
@@ -135,7 +138,6 @@ const onCloseNewsWindow = (): void => {
 a {
   color: var(--darker-green-text-color);
   text-decoration: underline;
-  cursor: pointer;
 }
 
 .card-title {
