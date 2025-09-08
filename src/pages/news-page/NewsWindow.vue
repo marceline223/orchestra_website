@@ -1,5 +1,9 @@
 <template>
-  <v-dialog :model-value="show" width="1000px" @update:model-value="onClickClose">
+  <v-dialog
+    :model-value="show"
+    width="1000px"
+    @update:model-value="onClickClose"
+  >
     <v-card class="pa-5">
       <div class="h2">
         {{ newsObject.title }}
@@ -10,11 +14,10 @@
       <p>
         <img
           v-if="newsObject?.photoSrc"
-          class="mb-7 mr-5"
+          class="mb-7 mr-5 news-img"
           :src="imageSrc"
           height="400px"
           alt="news photo"
-          align="left"
         />
         {{ newsObject.description }}
       </p>
@@ -64,5 +67,9 @@ const onClickClose = (): void => {
   max-width: 200px;
   border-radius: 8px;
   text-align: center;
+}
+
+.news-img {
+  float: left;
 }
 </style>

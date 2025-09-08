@@ -1,9 +1,9 @@
 <template>
-
-  <div class="page-title">Галерея</div>
-   <v-row
-    > <v-col cols="2"
-      >
+  <div class="page-title">
+    Галерея
+  </div>
+  <v-row>
+    <v-col cols="2">
       <div
         v-for="album in albums"
         :key="album.id"
@@ -13,48 +13,51 @@
       >
          {{ album.title }}
       </div>
-       </v-col
-    > <v-col
+    </v-col>
+    <v-col>
+      <div
+        v-if="currentAlbum"
+        class="gallery my-5"
       >
-      <div v-if="currentAlbum" class="gallery my-5">
-         <v-img
+        <v-img
           v-for="(photoSrc, index) in currentAlbum.photosSrc"
           :key="photoSrc"
           :src="getImageSrc(photoSrc)"
+          class="cursor-pointer"
           :class="getPhotoClass(index)"
-          eager
           cover
           @click="onClickImage(index)"
-        /> <v-dialog
+        />
+        <v-dialog
           width="1200px"
           height="1000px"
           :model-value="isImgWindowActive"
           @update:model-value="isImgWindowActive = false"
-          > <v-card
-            > <v-carousel
+        >
+          <v-card>
+            <v-carousel
               v-model="carouselValue"
               class="photo-carousel"
               show-arrows="hover"
               hide-delimiters
-              > <v-carousel-item
+            >
+              <v-carousel-item
                 v-for="photoSrc in currentAlbum.photosSrc"
                 :key="photoSrc"
                 :src="getImageSrc(photoSrc)"
                 cover
-              /> </v-carousel
-            > <v-card-text
-              >
+              />
+            </v-carousel>
+            <v-card-text>
               <p> Альбом: {{ currentAlbum.title }} </p>
 
               <p> Дата публикации: {{ new Date().toLocaleString() }} </p>
-               </v-card-text
-            > </v-card
-          > </v-dialog
-        >
+            </v-card-text>
+          </v-card>
+        </v-dialog>
       </div>
-       </v-col
-    > </v-row
-  >
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">

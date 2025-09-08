@@ -5,7 +5,12 @@
     @click="onShowNewsWindow"
   >
     <div class="card-content">
-      <v-img class="news-image" :src="imageSrc" cover :height="large ? 400 : 150" />
+      <v-img
+        class="news-image"
+        :src="imageSrc"
+        cover
+        :height="large ? 400 : 150"
+      />
       <v-card-text class="card-title">
         {{ title }}
       </v-card-text>
@@ -17,7 +22,11 @@
       </v-card-text>
     </div>
     <a class="mb-3"> Смотреть подробнее </a>
-    <news-window :news-object="newsObject" :show="isNewsWindowShown" @close="onCloseNewsWindow" />
+    <news-window
+      :news-object="newsObject"
+      :show="isNewsWindowShown"
+      @close="onCloseNewsWindow"
+    />
   </v-card>
 </template>
 

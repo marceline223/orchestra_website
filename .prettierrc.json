@@ -2,9 +2,13 @@
   "semi": true,
   "singleQuote": true,
   "trailingComma": "all",
-  "printWidth": 80,
+  "printWidth": 100,
   "tabWidth": 2,
+  "useTabs": false,
   "vueIndentScriptAndStyle": false,
-  "plugins": ["prettier-plugin-vue"],
-  "vueAttributesWrap": "force-always"
+  "htmlWhitespaceSensitivity": "ignore",
+  "bracketSameLine": false,
+  "singleAttributePerLine": true,
+  "arrowParens": "always",
+  "endOfLine": "lf"
 }

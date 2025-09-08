@@ -8,7 +8,10 @@
           @click="onClickPrev"
         />
       </div>
-      <div style="width: 100%" class="mx-2">
+      <div
+        style="width: 100%"
+        class="mx-2"
+      >
         <v-carousel
           v-model="carouselValue"
           cycle

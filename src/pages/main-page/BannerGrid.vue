@@ -179,7 +179,7 @@ const bannerPhotosSrc = [
 ];
 const bannerPhotosWay = '/photos/main-page/banner/';
 
-const getBannerPhotoSrc = (index) => {
+const getBannerPhotoSrc = (index: number): string => {
   return bannerPhotosWay + bannerPhotosSrc[index];
 }
 

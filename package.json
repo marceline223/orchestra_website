@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",
+    "@prettier/plugin-xml": "^3.4.2",
     "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@typescript-eslint/parser": "^8.32.0",
     "@vitejs/plugin-vue": "^5.2.1",
@@ -41,7 +42,10 @@
     "vite": "^5.1.0"
   },
   "lint-staged": {
-    "*.{js,ts,vue,css,scss,md,json}": [
+    "*.{js,ts,vue}": [
+      "eslint --fix"
+    ],
+    "*.{json,css,scss,md}": [
       "prettier --write"
     ]
   }

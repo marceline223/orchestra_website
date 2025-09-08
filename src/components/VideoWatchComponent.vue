@@ -20,50 +20,48 @@
     <img
       class="cursor-pointer"
       src="../assets/icons/play.svg"
+      alt=">"
       @click="onOpenDialog"
-    >
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+  /**
+   * Иконка play поверх картинки превью, открывает модальное окно просмотра со встроенным ВК-плеером
+   */
+  const emit = defineEmits(['open', 'close']);
+  const props = defineProps({
+    videoSrc: {
+      type: String,
+      required: true,
+    },
+    videoWidth: {
+      type: String,
+      required: true,
+    },
+    videoHeight: {
+      type: String,
+      required: true,
+    },
+    isModalShown: {
+      type: Boolean,
+      required: true,
+    },
+  });
 
-/**
- * Иконка play поверх картинки превью, открывает модальное окно просмотра со встроенным ВК-плеером
- */
-const emit = defineEmits(['open', 'close']);
-const props = defineProps({
-  videoSrc: {
-    type: String,
-    required: true,
-  },
-  videoWidth: {
-    type: String,
-    required: true,
-  },
-  videoHeight: {
-    type: String,
-    required: true,
-  },
-  isModalShown: {
-    type: Boolean,
-    required: true,
-  }
-});
+  const onOpenDialog = (): void => {
+    emit('open');
+  };
 
-const onOpenDialog = () => {
-  emit('open');
-}
-
-const onCloseDialog = () => {
-  emit('close');
-}
+  const onCloseDialog = (): void => {
+    emit('close');
+  };
 </script>
 
 <style lang="scss" scoped>
-
-.preview-icon-container {
-  grid-area: 1 / 1;
-  align-self: center;
-}
-
+  .preview-icon-container {
+    grid-area: 1 / 1;
+    align-self: center;
+  }
 </style>

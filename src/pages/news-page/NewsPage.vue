@@ -1,20 +1,25 @@
 <template>
-
-  <div class="page-title">Новости оркестра</div>
-
-  <div v-if="news.length" class="news-grid mt-10">
-     <!-- большая карточка --> <news-preview-component
+  <div class="page-title">
+    Новости оркестра
+  </div>
+  <div
+    v-if="news.length"
+    class="news-grid mt-10"
+  >
+    <!-- большая карточка -->
+    <news-preview-component
       :news-object="news[0]"
       class="news-item large"
       large
-    /> <!-- маленькие --> <news-preview-component
+    />
+    <!-- маленькие -->
+    <news-preview-component
       v-for="newsObj in news.slice(1)"
       :key="newsObj.id"
       :news-object="newsObj"
       class="news-item small"
     />
   </div>
-
 </template>
 
 <script setup lang="ts">
