@@ -1,17 +1,19 @@
-@import url("/fonts/CorsaGrotesk/stylesheet.css");
-
-$light-green: #6EA06A;
-$green-text-color: #064B00;
-$footer-color: #D9F3D0;
-$darker-green-text-color: #144311;
+@import url('/public/fonts/CorsaGrotesk/stylesheet.css');
 
 :root {
   font-family: 'Corsa Grotesk', serif;
   line-height: 1.5;
   font-weight: 400;
 
+  --light-green-color: #afd1ac;
+  --green-text-color: #064b00;
+  --footer-color: #d9f3d0;
+  --darker-green-text-color: #144311;
+  --hover-color: #eaf0e8;
+  --active-hover-color: #c1d3bb;
+  --active-color: #d1ddce;
+
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -58,34 +60,72 @@ a {
 }
 
 .photo-cube {
-  border: 3px solid $light-green;
+  border: 3px solid var(--light-green-color);
   border-radius: 1.5em;
 }
 
 .carousel-photo {
-  .v-img {
-    border-radius: 5em;
-    border: 3px solid $light-green;
-  }
+  border-radius: 5em;
+  border: 3px solid var(--light-green-color);
+}
+
+.rounded-photo {
+  border-radius: 30%;
+  border: 5px solid var(--light-green-color);
 }
 
 .darker-green-text {
-  color: $darker-green-text-color;
+  color: var(--darker-green-text-color) !important;
 }
 
 .green-text {
-  color: $green-text-color;
+  color: var(--green-text-color);
 }
 
-h1 {
-  color: $green-text-color;
+.light-green-text {
+  color: var(--light-green-color);
+}
+
+h1,
+.h1 {
+  color: var(--green-text-color);
   text-align: left;
   font-weight: 100;
   font-size: 32pt;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+h2,
+.h2 {
+  color: var(--green-text-color);
+  text-align: left;
+  font-weight: lighter !important;
+  font-size: 24pt !important;
+}
+
+h3,
+.h3 {
+  color: var(--darker-green-text-color);
+  text-align: left;
+  font-weight: lighter;
+  font-size: 16pt;
+}
+
+.page-title {
+  color: var(--green-text-color);
+  font-size: 24pt;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 16px;
+}
+
+.lh-small {
+  line-height: 1.1;
 }
 
 .main-page-text {
-  color: $green-text-color;
+  color: var(--green-text-color);
   letter-spacing: 1.5pt;
   text-align: left;
   font-weight: 100;
@@ -93,50 +133,91 @@ h1 {
   line-height: 1;
 }
 
+.main-page-button {
+  text-transform: none !important;
+  font-weight: 50 !important;
+  font-size: 20pt !important;
+}
+
+.light-green-button {
+  background-color: var(--light-green-color) !important;
+  color: white !important;
+}
+
 .footer-component {
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
-  border-top: 3px solid $green-text-color !important;
+  border-top: 4px solid var(--light-green-color) !important;
+  padding-top: 1em !important;
 
   p {
-    color: $darker-green-text-color;
+    color: var(--darker-green-text-color);
   }
 }
 
 .header-app-bar {
-  border-bottom: 2px solid $green-text-color !important;
+  border-bottom: 2px solid var(--green-text-color) !important;
 }
 
-v-container, .v-container {
+.date-container {
+  background-color: var(--light-green-color);
+  align-content: center;
+  color: white;
+  font-weight: lighter;
+}
+
+v-container,
+.v-container {
   padding: 3em !important;
   min-width: 100% !important;
 }
 
-v-main, .v-main {
-  margin: auto;
-  width: 70%;
+.v-application {
+  height: 200% !important;
+}
+
+v-main,
+.v-main {
+  margin: 0 auto;
+  padding: 0;
+  width: 80%;
   min-height: auto;
   -webkit-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
   -moz-box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
   box-shadow: 0 0 50px 0 rgba(99, 99, 99, 0.3);
 }
 
+@media (min-width: 1920px) {
+  v-main,
+  .v-main {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1919.99px) {
+  v-main,
+  .v-main {
+    width: 80%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199.99px) {
+  v-main,
+  .v-main {
+    width: 90%;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 899.99px) {
+  v-main,
+  .v-main {
+    width: 95%;
+  }
+}
+
 #app {
   margin: 0 auto;
   text-align: center;
   min-width: 100%;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  /*a:hover {*/
-  /*  color: #747bff;*/
-  /*}*/
-  button {
-    background-color: #f9f9f9;
-  }
 }

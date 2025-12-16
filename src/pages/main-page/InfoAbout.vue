@@ -1,66 +1,66 @@
 <template>
   <v-row>
-    <div class="carousel-btn">
-      <v-icon
-        icon="mdi-menu-left"
-        color="#6EA06A"
-        size="x-large"
-        @click="onClickPrev"
-      />
-    </div>
-    <v-col>
-      <v-carousel
+    <v-col class="d-flex">
+      <div class="carousel-btn cursor-pointer">
+        <img
+          src="../../assets/icons/arrow-left.svg"
+          alt="<"
+          @click="onClickPrev"
+        />
+      </div>
+      <div
+        style="width: 100%"
+        class="mx-2"
+      >
+        <v-carousel
           v-model="carouselValue"
           cycle
           class="mb-2 carousel-photo"
           hide-delimiters
           :show-arrows="false"
-      >
+        >
           <v-carousel-item
-              v-for="(photo) in carouselPhotosSrc"
-              :key="photo"
-              :src="carouselPhoto"
-              cover
-              eager
+            v-for="(photo) in carouselPhotosSrc"
+            :key="photo"
+            :src="carouselPhoto"
+            cover
+            eager
           />
-      </v-carousel>
-      <router-link
+        </v-carousel>
+        <router-link
           class="darker-green-text"
-          to="/gallery"
+          to="gallery"
           text="Смотреть все"
-      />
-    </v-col>
-    <div class="carousel-btn">
-      <v-icon
-          icon="mdi-menu-right"
-          color="#6EA06A"
-          size="x-large"
+        />
+      </div>
+      <div class="carousel-btn cursor-pointer">
+        <img
+          src="../../assets/icons/arrow-right.svg"
+          alt=">"
           @click="onClickNext"
-      />
-    </div>
+        />
+      </div>
+    </v-col>
 
-    <v-col class="text-about darker-green-text px-15 pt-5">
+    <v-col class="text-about darker-green-text pt-5 px-5 ml-10">
       <v-row>
         <v-img
-            class="photo-cube mr-3"
-            cover
-            aspect-ratio="2/1"
-            width="50px"
-            src="/photos/main-page/2.jpg"
+          class="photo-cube mr-3"
+          cover
+          aspect-ratio="2/1"
+          src="/photos/main-page/2.jpg"
         />
         <v-img
-            class="photo-cube mr-3"
-            cover
-            aspect-ratio="2/1"
-            width="50px"
-            src="/photos/main-page/2.jpg"
+          class="photo-cube mr-3"
+          cover
+          aspect-ratio="2/1"
+          src="/photos/main-page/2.jpg"
         />
         <v-img
-            class="photo-cube"
-            cover
-            aspect-ratio="2/1"
-            width="50px"
-            src="/photos/main-page/2.jpg"
+          class="photo-cube"
+          cover
+          aspect-ratio="2/1"
+          src="/photos/main-page/2.jpg"
         />
       </v-row>
       <v-row>
@@ -84,43 +84,36 @@
           различных музыкальных конкурсах, начиная с 2021 года.
         </p>
       </v-row>
-     </v-col>
+    </v-col>
   </v-row>
 </template>
 
-<script>
-export default {
-  name: "InfoAbout",
-  data: () => {
-    return {
-      carouselValue: 0,
-      carouselPhotosSrc: [
-        '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'
-      ],
-      carouselPhotosWay: '/photos/main-page/carousel/',
-    }
-  },
-  computed: {
-    carouselPhoto() {
-      return this.carouselPhotosWay + this.carouselPhotosSrc[this.carouselValue];
-    }
-  },
-  methods: {
-    onClickPrev() {
-      if (this.carouselValue > 0) {
-        this.carouselValue--;
-      } else {
-        this.carouselValue = this.carouselPhotosSrc.length - 1;
-      }
-    },
-    onClickNext() {
-      if (this.carouselValue < this.carouselPhotosSrc.length - 1) {
-        this.carouselValue++;
-      } else {
-        this.carouselValue = 0;
-      }
-    },
-  },
+<script setup lang="ts">
+
+import {computed, ref} from "vue";
+
+const carouselValue = ref(0);
+const carouselPhotosSrc = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+const carouselPhotosWay = '/photos/main-page/carousel/';
+
+const carouselPhoto = computed(() => {
+  return carouselPhotosWay + carouselPhotosSrc[carouselValue.value];
+})
+
+const onClickPrev = (): void => {
+  if (carouselValue.value > 0) {
+    carouselValue.value--;
+  } else {
+    carouselValue.value = carouselPhotosSrc.length - 1;
+  }
+}
+
+const onClickNext = (): void => {
+  if (carouselValue.value < carouselPhotosSrc.length - 1) {
+    carouselValue.value++;
+  } else {
+    carouselValue.value = 0;
+  }
 }
 </script>
 
@@ -129,6 +122,7 @@ export default {
   text-align: justify;
   font-size: 12pt;
 }
+
 .carousel-btn {
   margin-top: 15em;
 }

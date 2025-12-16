@@ -1,33 +1,37 @@
 <template>
   <div class="preview-icon-container">
     <v-dialog
-        v-model="isModalShown"
-        :width="videoWidth"
-        :height="videoHeight"
-        @close="onClickCloseDialog"
+      :model-value="isModalShown"
+      :width="props.videoWidth"
+      :height="props.videoHeight"
+      @close="onCloseDialog"
+      @keydown.esc="onCloseDialog"
     >
       <v-card>
         <iframe
-          :src="videoSrc"
-          :width="videoWidth"
-          :height="videoWidth"
+          :src="props.videoSrc"
+          :width="props.videoWidth"
+          :height="props.videoWidth"
           allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
           allowfullscreen
         />
       </v-card>
     </v-dialog>
-    <v-btn
-        class="preview-video-button"
-        icon="mdi-menu-right"
-        @click="isModalShown = true"
+    <img
+      class="cursor-pointer"
+      src="../assets/icons/play.svg"
+      alt=">"
+      @click="onOpenDialog"
     />
   </div>
 </template>
 
-<script>
-export default {
-  name: "VideoWatchComponent",
-  props: {
+<script setup lang="ts">
+  /**
+   * Иконка play поверх картинки превью, открывает модальное окно просмотра со встроенным ВК-плеером
+   */
+  const emit = defineEmits(['open', 'close']);
+  const props = defineProps({
     videoSrc: {
       type: String,
       required: true,
@@ -39,25 +43,25 @@ export default {
     videoHeight: {
       type: String,
       required: true,
-    }
-  },
-  emits: ['close'],
-  data() {
-    return {
-      isModalShown: false,
-    }
-  },
-  methods: {
-    onClickCloseDialog() {
-      this.isModalShown = false;
-    }
-  }
-}
+    },
+    isModalShown: {
+      type: Boolean,
+      required: true,
+    },
+  });
+
+  const onOpenDialog = (): void => {
+    emit('open');
+  };
+
+  const onCloseDialog = (): void => {
+    emit('close');
+  };
 </script>
 
 <style lang="scss" scoped>
-.v-btn--variant-elevated {
-  color: #6EA06A;
-  background-color: white;
-}
+  .preview-icon-container {
+    grid-area: 1 / 1;
+    align-self: center;
+  }
 </style>

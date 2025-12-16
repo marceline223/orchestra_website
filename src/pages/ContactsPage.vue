@@ -1,11 +1,10 @@
 <template>
-  <h2>Контакты</h2>
+  <div class="page-title">
+    Контакты
+  </div>
 </template>
 
-<script>
-export default {
-  name: "ContactsPage"
-}
+<script setup lang="ts">
 </script>
 
 <style scoped>
