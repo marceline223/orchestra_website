@@ -1,7 +1,13 @@
 import {Instrument} from "@models/Instrument";
+import { Model } from '@models/Model';
 
-export type MemberInstrument = {
-  instrument: Instrument,
-  position: string | null,
-  order: number | null,
+export class MemberInstrument extends Model {
+  instrument: Instrument | null = null;
+  position: string | null = null;
+  order: number | null = null;
+
+  constructor(init?: Partial<MemberInstrument>) {
+    super();
+    Object.assign(this, init);
+  }
 }

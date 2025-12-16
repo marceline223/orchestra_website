@@ -32,7 +32,7 @@ const news: News[] = ref<News[]>([]);
 
 onMounted(async () => {
   window.scrollTo(0, 0);
-  news.value = await newsService.getAllNews();
+  news.value = await newsService.load();
 });
 </script>
 

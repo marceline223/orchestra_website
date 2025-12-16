@@ -68,8 +68,8 @@ const members: Member[] = ref<Member[]>([]);
 
 onMounted(async () => {
   window.scrollTo(0, 0);
-  instruments.value = await instrumentService.getInstruments();
-  members.value = await memberService.getMembers();
+  instruments.value = await instrumentService.load();
+  members.value = await memberService.load();
 });
 
 const sortByOrder = (orderA: number, orderB: number, nameA: string, nameB: string): number => {

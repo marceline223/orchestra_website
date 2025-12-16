@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { computed, PropType } from 'vue';
 import { News } from '@models/News';
-import { getDateStr } from '@/util/util';
+import { getLongMonthDateStr } from '@/util/util';
 
 const props = defineProps({
   newsObject: {
@@ -44,7 +44,7 @@ const props = defineProps({
 const emit = defineEmits(['close']);
 
 const dateStr: string = computed(() => {
-  return getDateStr(props.newsObject?.date);
+  return getLongMonthDateStr(props.newsObject?.date);
 });
 
 const imageSrc = computed(() => {

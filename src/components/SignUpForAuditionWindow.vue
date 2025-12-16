@@ -53,11 +53,11 @@
               />
               <v-checkbox
                 v-model="isSurnameNotRequired"
-                color="light-green"
+                color="light-green-color"
                 label="Нет отчества"
                 density="comfortable"
                 variant="underlined"
-                @update:model-value="onClickSurnameCheckbox()"
+                @update:model-value="onClickSurnameCheckbox"
               />
             </v-row>
             <v-text-field
@@ -81,7 +81,7 @@
               />
               <v-checkbox
                 v-model="form.haveInstrument"
-                color="light-green"
+                color="light-green-color"
                 label="Инструмент в наличии"
                 density="comfortable"
                 variant="underlined"
@@ -237,8 +237,8 @@ const form = ref({
 const rules: Record<string, Validator> = {
   required: value => !!value || 'Поле обязательно',
   surnameRequired: value => isSurnameNotRequired.value || !!value || 'Поле обязательно',
-  onlyDigits: value => /^[0-9]+$/.test(value) || 'Только цифры',
-  onlyLetters: value => /^[a-zA-Zа-яёА-ЯЁ]+$/.test(value) || 'Только буквы'
+  onlyDigits: value => !value || /^[0-9]+$/.test(value) || 'Только цифры',
+  onlyLetters: value => !value || /^[a-zA-Zа-яёА-ЯЁ]+$/.test(value) || 'Только буквы'
 };
 const isAlertShown = ref(false);
 const degrees: Degree[] = [

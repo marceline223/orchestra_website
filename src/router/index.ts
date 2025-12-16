@@ -1,13 +1,14 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
-import MainPage from "../pages/main-page/MainPage.vue";
-import ContactsPage from "../pages/ContactsPage.vue";
-import GalleryPage from "../pages/GalleryPage.vue";
-import NewsPage from "../pages/news-page/NewsPage.vue";
-import AboutAuditionPage from "../pages/AboutAuditionPage.vue";
-import ErrorPage from "../pages/ErrorPage.vue";
-import MembersPage from "../pages/about-us/MembersPage.vue";
-import HistoryPage from "../pages/about-us/HistoryPage.vue";
+import MainPage from '@/pages/main-page/MainPage.vue';
+import ContactsPage from '@/pages/ContactsPage.vue';
+import GalleryPage from '@/pages/GalleryPage.vue';
+import NewsPage from '@/pages/news-page/NewsPage.vue';
+import AboutAuditionPage from '@/pages/AboutAuditionPage.vue';
+import ErrorPage from '@/pages/ErrorPage.vue';
+import MembersPage from '@/pages/about-us/MembersPage.vue';
+import HistoryPage from '@/pages/about-us/HistoryPage.vue';
+import AdminPanel from '@/admin_lk/AdminPanel.vue';
 
 const routes = [
   {
@@ -50,11 +51,16 @@ const routes = [
     name: 'Страница не найдена',
     component: ErrorPage,
   },
-]
+  {
+    path: '/admin',
+    name: 'Панель админа',
+    component: AdminPanel,
+  },
+];
 
 const router = createRouter({
   routes,
-  history: createWebHistory()
-})
+  history: createWebHistory(),
+});
 
-export default router
+export default router;

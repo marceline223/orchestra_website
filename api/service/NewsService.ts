@@ -1,13 +1,12 @@
-import {ApiService} from "@api/ApiService";
-import {News} from "@models/News";
+import { ApiService } from '@api/ApiService';
+import { News } from '@models/News';
+import { Query } from '@api/filters/IQuery';
 
 class NewsService extends ApiService {
-  getAllNews(): Promise<News[]> {
-    return this.get<News[]>('/news');
-  }
+  private readonly endpoint: string = '/news';
 
-  getNewsById(newsId: number): Promise<News | null> {
-    return this.get<News>(`/news${instrumentId}`);
+  load(query?: Query): Promise<News[]> {
+    return this.search<News[]>(this.endpoint, query);
   }
 }
 

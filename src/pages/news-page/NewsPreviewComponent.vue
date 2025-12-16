@@ -38,7 +38,7 @@
 import NewsWindow from './NewsWindow.vue';
 import { News } from '@models/News';
 import { computed, PropType, ref } from 'vue';
-import { getDateStr } from '@/util/util';
+import { getLongMonthDateStr } from '@/util/util';
 
 const props = defineProps({
   newsObject: {
@@ -85,7 +85,7 @@ const title: string = computed(() => {
 });
 
 const dateStr: string = computed(() => {
-  return getDateStr(props.newsObject?.date);
+  return getLongMonthDateStr(props.newsObject?.date);
 });
 
 const trimStr = (str: string, length: number): string => {

@@ -23,6 +23,11 @@
     <v-spacer/>
 
     <v-btn
+      to="admin"
+      icon="mdi-account"
+    />
+
+    <v-btn
       to="audition"
       class="header-link"
       text="О прослушиваниях"
