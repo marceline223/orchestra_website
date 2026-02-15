@@ -128,7 +128,7 @@ import { getDefaultDateStr } from '@/util/util';
 import { University } from '@models/University';
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue';
 import { ConfirmDialogExpose } from '@/components/dialogs/ConfirmDialogInterface';
-import MemberForm from '@/admin_lk/members/MemberForm.vue';
+import MemberForm from '@/components/MemberForm.vue';
 
 const candidates = ref<Member[]>([]);
 const instruments = ref<Instrument[]>([]);

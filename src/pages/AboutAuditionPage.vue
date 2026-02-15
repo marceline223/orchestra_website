@@ -84,7 +84,7 @@
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
-import MemberForm from '@/admin_lk/members/MemberForm.vue'
+import MemberForm from '@/components/MemberForm.vue'
 
 const isWindowActive = ref(false);
 

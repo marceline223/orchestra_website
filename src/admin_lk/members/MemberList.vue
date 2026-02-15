@@ -124,7 +124,7 @@ import { memberService } from '@api/service/MemberService';
 import { Instrument } from '@models/Instrument';
 import { University } from '@models/University';
 import { Member } from '@models/Member';
-import MemberForm from '@/admin_lk/members/MemberForm.vue';
+import MemberForm from '@/components/MemberForm.vue';
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue';
 import { ConfirmDialogExpose } from '@/components/dialogs/ConfirmDialogInterface';
 
