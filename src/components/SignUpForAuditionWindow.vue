@@ -142,9 +142,10 @@
               <v-combobox
                 v-model="form.education.degree"
                 label="Степень обучения"
-                :items="degrees"
+                :items="educationDegrees"
                 item-value="key"
                 item-title="name"
+                :return-object="false"
                 density="comfortable"
                 variant="underlined"
               />
@@ -200,7 +201,7 @@
 import {ref} from "vue";
 import {Validator} from "@models/Validator";
 import type {VTextField} from "vuetify/components";
-import {Degree} from "@models/Degree";
+import { educationDegrees } from '@models/EducationDegree';
 
 const props = defineProps({
   isWindowActive: {
@@ -241,28 +242,6 @@ const rules: Record<string, Validator> = {
   onlyLetters: value => !value || /^[a-zA-Zа-яёА-ЯЁ]+$/.test(value) || 'Только буквы'
 };
 const isAlertShown = ref(false);
-const degrees: Degree[] = [
-  {
-    id: 0,
-    key: 'BACHELOR',
-    name: 'Бакалавриат'
-  },
-  {
-    id: 1,
-    key: 'SPECIALIST',
-    name: 'Специалитет'
-  },
-  {
-    id: 2,
-    key: 'MASTER',
-    name: 'Магистратура'
-  },
-  {
-    id: 3,
-    key: 'POST_GRADUATED',
-    name: 'Аспирантура'
-  },
-]
 
 const onClickClose: void = () => {
   emit('close');

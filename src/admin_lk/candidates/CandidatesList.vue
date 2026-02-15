@@ -27,10 +27,6 @@
         variant="underlined"
         clearable
       />
-      <v-checkbox
-        v-model="filter.showInactive"
-        label="Показывать неактивных"
-      />
     </v-row>
     <v-row class="my-2 ml-1">
       <v-btn
@@ -38,23 +34,23 @@
         icon="mdi-plus"
         size="small"
         color="light-green-color"
-        @click="onAddMember"
+        @click="onAddCandidate"
       />
       <v-btn
         variant="text"
         icon="mdi-pencil"
         size="small"
         color="light-green-color"
-        :disabled="!selectedMember"
-        @click="onEditMember"
+        :disabled="!selectedCandidate"
+        @click="onEditCandidate"
       />
       <v-btn
         variant="text"
         icon="mdi-close"
         size="small"
         color="light-green-color"
-        :disabled="!selectedMember"
-        @click="onDeleteMember"
+        :disabled="!selectedCandidate"
+        @click="onDeleteCandidate"
       />
       <v-btn
         variant="text"
@@ -62,7 +58,14 @@
         size="small"
         color="light-green-color"
         tooltip="Обновить"
-        @click="loadMembers"
+        @click="loadCandidates"
+      />
+      <v-btn
+        variant="text"
+        text="Перенести в состав"
+        color="light-green-color"
+        :disabled="!selectedCandidate"
+        @click="transformToMember"
       />
     </v-row>
     <v-table
@@ -72,66 +75,65 @@
       :loading="isLoading"
     >
       <thead>
-        <tr>
-          <th class="text-center">№</th>
-          <th class="text-center">ФИО</th>
-          <th class="text-center">Дата рождения</th>
-          <th class="text-center">Инструмент</th>
-        </tr>
+      <tr>
+        <th class="text-center">№</th>
+        <th class="text-center">ФИО</th>
+        <th class="text-center">Дата рождения</th>
+        <th class="text-center">Инструмент</th>
+      </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="(member, index) in members"
-          :key="member.id"
-          class="cursor-pointer"
-          :class="getTrClass(member)"
-          @click="onClickMember(member)"
-          @dblclick="onEditMember"
-        >
-          <td>
-            {{ index + 1 }}
-          </td>
-          <td>
-            {{ member?.getFullName() }}
-          </td>
-          <td>
-            {{ getBirthdayStr(member) }}
-          </td>
-          <td>
-            {{ getInstrumentsStr(member) }}
-          </td>
-        </tr>
+      <tr
+        v-for="(candidate, index) in candidates"
+        :key="candidate.id"
+        class="cursor-pointer"
+        :class="getTrClass(candidate)"
+        @click="onClickCandidate(candidate)"
+      >
+        <td>
+          {{ index + 1 }}
+        </td>
+        <td>
+          {{ candidate?.getFullName() }}
+        </td>
+        <td>
+          {{ getBirthdayStr(candidate) }}
+        </td>
+        <td>
+          {{ getInstrumentsStr(candidate) }}
+        </td>
+      </tr>
       </tbody>
     </v-table>
 
     <member-form
       :is-window-active="isEditWindowActive"
-      :model-value="selectedMember"
-      @submit="onSaveMember"
+      is-candidate
+      :model-value="selectedCandidate"
+      @submit="onSaveCandidate"
       @close="onCloseForm"
     />
-
     <confirm-dialog ref="confirmDialog" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
-import { getDefaultDateStr } from '@/util/util';
+import { Member } from '@models/Member';
 import { instrumentService } from '@api/service/InstrumentService';
 import { universityService } from '@api/service/UniversityService';
-import { memberService } from '@api/service/MemberService';
 import { Instrument } from '@models/Instrument';
+import { memberService } from '@api/service/MemberService';
+import { getDefaultDateStr } from '@/util/util';
 import { University } from '@models/University';
-import { Member } from '@models/Member';
-import MemberForm from '@/admin_lk/members/MemberForm.vue';
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue';
 import { ConfirmDialogExpose } from '@/components/dialogs/ConfirmDialogInterface';
+import MemberForm from '@/admin_lk/members/MemberForm.vue';
 
+const candidates = ref<Member[]>([]);
 const instruments = ref<Instrument[]>([]);
 const universities = ref<University[]>([]);
-const members = ref<Member[]>([]);
-const selectedMember = ref<Member | null>(null);
+const selectedCandidate = ref<Member | null>(null);
 
 const isEditWindowActive = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
@@ -140,23 +142,22 @@ const confirmDialog = ref<ConfirmDialogExpose | null>(null);
 const filter = ref({
   instruments: [],
   university: null,
-  showInactive: false,
 });
+
+watch(
+  () => [filter.value.instruments, filter.value.university],
+  () => loadCandidates()
+);
 
 onMounted(async () => {
   window.scrollTo(0, 0);
   instruments.value = await instrumentService.load();
   universities.value = await universityService.load();
-  loadMembers();
+  loadCandidates();
 });
 
-watch(
-  () => [filter.value.instruments, filter.value.showInactive, filter.value.university],
-  () => loadMembers()
-);
-
-const loadMembers = async (): void => {
-  selectedMember.value = null;
+const loadCandidates = async (): void => {
+  selectedCandidate.value = null;
   const filters = [];
   if (filter.value.instruments.length) {
     filters.push({
@@ -172,16 +173,9 @@ const loadMembers = async (): void => {
       condition: 'equals',
     });
   }
-  if (!filter.value.showInactive) {
-    filters.push({
-      key: 'isActive',
-      value: true,
-      condition: 'equals',
-    });
-  }
   filters.push({
     key: 'isCandidate',
-    value: false,
+    value: true,
     condition: 'equals',
   });
   isLoading.value = true;
@@ -196,7 +190,7 @@ const loadMembers = async (): void => {
       relations: ['instruments', 'instruments.instrument', 'university']
     })
     .then((d: Member[]) => {
-      members.value = d.map((m: Member) => new Member(m));
+      candidates.value = d.map((m: Member) => new Member(m));
       isLoading.value = false;
     })
     .catch(() => {
@@ -204,53 +198,67 @@ const loadMembers = async (): void => {
     });
 };
 
-const onAddMember = (): void => {
+const onAddCandidate = (): void => {
   isEditWindowActive.value = true;
-  selectedMember.value = new Member();
+  selectedCandidate.value = new Member();
 };
 
-const onEditMember = (): void => {
+const onEditCandidate = (): void => {
   isEditWindowActive.value = true;
 };
 
-const onClickMember = (member: Member): void => {
-  selectedMember.value = new Member(member);
+const getBirthdayStr = (candidate: Member): string => {
+  return getDefaultDateStr(candidate.birthday);
 };
 
-const onSaveMember = (): void => {
-  loadMembers();
+const getInstrumentsStr = (candidate: Member): string => {
+  return candidate.instruments?.map((mi) => mi.instrument?.name).join(', ');
+};
+
+const onClickCandidate = (candidate: Member): void => {
+  selectedCandidate.value = new Member(candidate);
+};
+
+const getTrClass = (candidate: Member): string => {
+  return selectedCandidate.value?.id === candidate.id ? 'active' : '';
+};
+
+const onDeleteCandidate = (): void => {
+  confirmDialog.value?.open(
+    'Вы уверены, что хотите удалить заявку на прослушивание?',
+    async () => {
+      await memberService.deleteMember(selectedCandidate.value.id);
+      loadCandidates();
+    },
+    null,
+  );
+};
+
+const transformToMember = (): void => {
+  confirmDialog.value?.open(
+    `Вы уверены, что хотите утвердить ${selectedCandidate.value.getFullName()}?`,
+    async () => {
+      selectedCandidate.value.isCandidate = false;
+      selectedCandidate.value.isActive = true;
+      selectedCandidate.value.joinDate = new Date();
+      await memberService.save(selectedCandidate.value).then(() => loadCandidates());
+    },
+    null,
+  );
+}
+
+const onSaveCandidate = (): void => {
+  loadCandidates();
   onCloseForm();
 };
 
 const onCloseForm = (): void => {
   isEditWindowActive.value = false;
 };
-
-const onDeleteMember = (): void => {
-  confirmDialog.value?.open(
-    'Вы уверены, что хотите удалить участника?',
-    async () => {
-      await memberService.deleteMember(selectedMember.value.id);
-      loadMembers();
-    },
-    null,
-  );
-};
-
-const getBirthdayStr = (member: Member): string => {
-  return getDefaultDateStr(member.birthday);
-};
-
-const getInstrumentsStr = (member: Member): string => {
-  return member.instruments?.map((mi) => mi.instrument?.name).join(', ');
-};
-
-const getTrClass = (member: Member): string => {
-  return selectedMember.value?.id === member.id ? 'active' : '';
-};
 </script>
 
 <style scoped lang="scss">
+
 th {
   background-color: var(--light-green-color) !important;
 }

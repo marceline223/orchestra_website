@@ -1,49 +1,48 @@
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { AxiosResponse } from 'axios';
 import { api } from './api';
 import { Query } from '@api/filters/IQuery';
 import { Model } from '@models/Model';
 
-export class ApiService {
-  get<T>(endpoint: string, params?: Query): Promise<T> {
+export abstract class ApiService<T extends Model> {
+  protected abstract endpoint: string;
+
+  getAll(params?: Query): Promise<T[]> {
     return api
-      .get<T>(endpoint, {
-        headers: { 'Content-Type': 'application/json' },
-        params,
-      })
+      .get<T[]>(this.endpoint, { params })
       .then((res: AxiosResponse<T>) => res.data);
   }
 
-  search<T>(endpoint: string, body: unknown): Promise<T> {
-    return api.post<T>(`${endpoint}/load`, body).then((res: AxiosResponse<T>) => res.data);
-  }
-
-  post<T>(endpoint: string, body: unknown, config?: AxiosRequestConfig): Promise<T> {
+  load(query?: Query): Promise<T[]> {
     return api
-      .post<T>(endpoint, body, {
-        headers: { 'Content-Type': 'application/json' },
-        ...config,
-      })
+      .post<T[]>(`${this.endpoint}/load`, query)
       .then((res: AxiosResponse<T>) => res.data);
   }
 
-  put<T>(endpoint: string, body: unknown, config?: AxiosRequestConfig): Promise<T> {
+  getById(id: number): Promise<T> {
     return api
-      .put<T>(endpoint, body, {
-        headers: { 'Content-Type': 'application/json' },
-        ...config,
-      })
+      .get<T>(`${this.endpoint}/${id}`)
       .then((res: AxiosResponse<T>) => res.data);
   }
 
-  update<T extends Model>(endpoint: string, entity: T, config?: AxiosRequestConfig): Promise<T> {
-    return this.put<T>(`${endpoint}/${entity.id}`, entity, config);
+  create(body: Partial<T>): Promise<T> {
+    return api
+      .post<T>(this.endpoint, body)
+      .then((res: AxiosResponse<T>) => res.data);
   }
 
-  save<T extends Model>(endpoint: string, body: T): Promise<T> {
-    return body.hasID() ? this.update(endpoint, body) : this.post(endpoint, body);
+  update(id: number, body: Partial<T>): Promise<T> {
+    return api
+      .put<T>(`${this.endpoint}/${id}`, body)
+      .then((res: AxiosResponse<T>) => res.data);
   }
 
-  delete(endpoint: string, id: number): Promise<void> {
-    return api.delete(`${endpoint}/${id}`).then(() => {});
+  save(entity: T): Promise<T> {
+    return entity.hasID()
+      ? this.update(entity.id, entity)
+      : this.create(entity);
+  }
+
+  delete(id: number): Promise<void> {
+    return api.delete(`${this.endpoint}/${id}`).then(() => {});
   }
 }

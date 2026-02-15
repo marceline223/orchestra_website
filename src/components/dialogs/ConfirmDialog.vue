@@ -6,7 +6,7 @@
     <v-card>
       <v-card-title class="ma-2"> Подтвердите действие </v-card-title>
       <v-card-text>{{ message }}</v-card-text>
-      <v-card-actions>
+      <v-card-actions class="ms-auto fixed-bottom">
         <v-btn
           color="grey"
           variant="tonal"
