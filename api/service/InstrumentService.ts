@@ -1,13 +1,8 @@
 import { ApiService } from '../ApiService';
-import { Instrument } from '@models/Instrument"'
-import { Query } from '@api/filters/IQuery';
+import { Instrument } from '@models/Instrument"';
 
-class InstrumentService extends ApiService {
-  private readonly endpoint: string = '/instrument';
-
-  load(query?: Query): Promise<Instrument[]> {
-    return this.search<Instrument[]>(this.endpoint, query);
-  }
+class InstrumentService extends ApiService<Instrument> {
+  protected readonly endpoint: string = '/instrument';
 }
 
 export const instrumentService = new InstrumentService();

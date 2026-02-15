@@ -36,8 +36,10 @@
       @click="onClickShowModal"
     />
 
-    <sign-up-for-audition-window
+    <member-form
+      is-candidate
       :is-window-active="isWindowActive"
+      @submit="onClickCloseModal"
       @close="onClickCloseModal"
     />
 
@@ -82,9 +84,9 @@
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
-import SignUpForAuditionWindow from '../components/SignUpForAuditionWindow.vue';
+import MemberForm from '@/admin_lk/members/MemberForm.vue'
 
-const isWindowActive = ref(false)
+const isWindowActive = ref(false);
 
 onMounted(() => {
   window.scrollTo(0, 0);
