@@ -32,13 +32,13 @@ body {
 .v-btn {
   font-weight: 1800;
   font-size: 1em;
-  line-height: 3.1;
+  //line-height: 3.1;
 }
 
-/*h1 {*/
-/*  font-size: 3.2em;*/
-/*  line-height: 1.1;*/
-/*}*/
+//h1 {
+//  font-size: 3.2em;
+//  line-height: 1.1;
+//}
 
 button {
   border-radius: 8px;
@@ -116,7 +116,7 @@ h3,
   color: var(--green-text-color);
   font-size: 24pt;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 16px;
 }
 
@@ -169,7 +169,7 @@ h3,
 
 v-container,
 .v-container {
-  padding: 3em !important;
+  padding: 5em !important;
   min-width: 100% !important;
 }
 

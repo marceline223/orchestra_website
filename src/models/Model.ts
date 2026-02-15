@@ -1,6 +1,8 @@
 import { ExcludeFromSave } from './decorator/decorators';
 
 export class Model {
+  id?: number | null;
+
   @ExcludeFromSave()
   uid: string;
 
