@@ -108,7 +108,7 @@
 
     <member-form
       :is-window-active="isEditWindowActive"
-      :is-candidate
+      is-candidate
       :model-value="selectedCandidate"
       @submit="onSaveCandidate"
       @close="onCloseForm"

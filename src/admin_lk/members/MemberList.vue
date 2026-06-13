@@ -107,7 +107,7 @@
     <member-form
       :is-window-active="isEditWindowActive"
       :model-value="selectedMember"
-      @submit="onSaveMember"
+      @submit="onCloseForm"
       @close="onCloseForm"
     />
 
@@ -217,12 +217,8 @@ const onClickMember = (member: Member): void => {
   selectedMember.value = new Member(member);
 };
 
-const onSaveMember = (): void => {
-  loadMembers();
-  onCloseForm();
-};
-
 const onCloseForm = (): void => {
+  loadMembers();
   isEditWindowActive.value = false;
 };
 

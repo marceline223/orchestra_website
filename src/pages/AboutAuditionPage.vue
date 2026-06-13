@@ -157,6 +157,7 @@ const faqData = ref([
   border-radius: 1em;
   font-weight: lighter;
   font-size: 16pt;
+  cursor: pointer;
 }
 
 .faq-answer {
