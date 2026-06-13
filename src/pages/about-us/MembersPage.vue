@@ -18,20 +18,21 @@
         class="d-flex flex-column align-center justify-start mb-3"
       >
         <v-img
+          v-if="member.photoSrc"
           class="rounded-photo"
-          :src="photosWay + member.photoSrc"
+          :src="`${API_URL}/uploads/${member.photoSrc}`"
           width="240px"
           aspect-ratio="1"
           cover
-        >
-          <template #error>
-            <v-img
-              width="300px"
-              src="not_found.jpg"
-              cover
-            ></v-img>
-          </template>
-        </v-img>
+        />
+        <v-img
+          v-else
+          class="rounded-photo"
+          width="240px"
+          aspect-ratio="1"
+          :src="member.gender==='F' ? '/photos/members/not_found_f.jpg' : '/photos/members/not_found_m.jpg'"
+          cover
+        />
         <div class="mt-1 h-100">
           <h3 class="darker-green-text text-center photo-label lh-small">
             {{ member.firstName }}
@@ -61,7 +62,7 @@ import {instrumentService} from "@api/service/InstrumentService";
 import {memberService} from "@api/service/MemberService";
 import {ref, onMounted} from "vue";
 
-const photosWay = '/photos/members/'
+const API_URL = import.meta.env.VITE_API_URL;
 
 const instruments: Instrument[] = ref<Instrument[]>([]);
 const members: Member[] = ref<Member[]>([]);
@@ -69,7 +70,16 @@ const members: Member[] = ref<Member[]>([]);
 onMounted(async () => {
   window.scrollTo(0, 0);
   instruments.value = await instrumentService.load();
-  members.value = await memberService.load();
+  members.value = await memberService.load({
+    sort: [
+      {
+        key: 'lastName',
+      },
+    ],
+    relations: ['instruments', 'instruments.instrument']
+  }).then((d: Member[]) => {
+    members.value = d.map((m: Member) => new Member(m));
+  })
 });
 
 const sortByOrder = (orderA: number, orderB: number, nameA: string, nameB: string): number => {
@@ -89,7 +99,7 @@ const sortedInstruments = (): Instrument[] => {
 const getMembersByInstruments = (instrumentId: number): Member[] => {
   const allMembers = members.value as Member[] | undefined;
   return allMembers
-    .filter((member: Member) => member.instruments?.find((i: MemberInstrument) => i.instrument.id === instrumentId))
+    .filter((member: Member) => member.isActive && member.instruments?.find((i: MemberInstrument) => i.instrument.id === instrumentId))
     .sort((a, b) => {
       const orderA = a.instruments?.find(i => i.instrument.id === instrumentId)?.order;
       const orderB = b.instruments?.find(i => i.instrument.id === instrumentId)?.order;

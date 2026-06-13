@@ -84,7 +84,7 @@
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
-import MemberForm from '@/admin_lk/members/MemberForm.vue'
+import MemberForm from '@/components/MemberForm.vue'
 
 const isWindowActive = ref(false);
 
@@ -157,6 +157,7 @@ const faqData = ref([
   border-radius: 1em;
   font-weight: lighter;
   font-size: 16pt;
+  cursor: pointer;
 }
 
 .faq-answer {

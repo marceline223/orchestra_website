@@ -107,7 +107,7 @@
     <member-form
       :is-window-active="isEditWindowActive"
       :model-value="selectedMember"
-      @submit="onSaveMember"
+      @submit="onCloseForm"
       @close="onCloseForm"
     />
 
@@ -124,7 +124,7 @@ import { memberService } from '@api/service/MemberService';
 import { Instrument } from '@models/Instrument';
 import { University } from '@models/University';
 import { Member } from '@models/Member';
-import MemberForm from '@/admin_lk/members/MemberForm.vue';
+import MemberForm from '@/components/MemberForm.vue';
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue';
 import { ConfirmDialogExpose } from '@/components/dialogs/ConfirmDialogInterface';
 
@@ -217,12 +217,8 @@ const onClickMember = (member: Member): void => {
   selectedMember.value = new Member(member);
 };
 
-const onSaveMember = (): void => {
-  loadMembers();
-  onCloseForm();
-};
-
 const onCloseForm = (): void => {
+  loadMembers();
   isEditWindowActive.value = false;
 };
 
